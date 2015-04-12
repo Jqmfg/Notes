@@ -1,0 +1,123 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 4                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+SOFTWARE
+
+In this section we will talk about "what is software"
+how is it that something runs on a computer
+when we talked about hardware we talked about the cpu
+the cpu runs machine code instructions
+these are extremely simple instructions
+e.g.
+compare 2 numbers
+add 2 numbers
+the code that we have seen before is much more complicated than this
+What happens is that this code expands to several machine code instructions
+What is a program?
+A program is a series of CPU instructions
+It is an enormous sequence, but they are all simple machine code instructions
+somewhere in the ram, there is code for everything you can do in a computer
+These are very simple things, but they come togethter to make a program
+i.e. translates from machine code to programs as sand to a scultpure
+The cpu runs a fetch execute cycle
+the cpu starts with instruction 1 and runs it
+when it is done with instruction 1, it moves down the list to instruction 2 etc
+When we say a computer runs at 3GHz, this is what we are talking about
+There are several instructions that we can use
+One of them is to jump back to previous instructions that we have
+This is how loops are implemented
+If there is some piece of code that we want to do multiple times, then we send it back to earlier
+We can also test some instruction so it might skip part of the code
+By arranging the instructions just so, we can get something that looks like an if statement
+how do we get it to this state
+We load the instructions into RAM
+e.g. when we have firefox, then we have it on our hard drive
+firefox.exe has a lot of bytes in it and for the most part, it is just the instructions that make it up
+What happens when we run the program
+The first thing is that the bytes for the instructions get copied over to the RAM
+Then we tell the cpu to execute starting at a specific spot
+Now it is running firefox
+Who handles the double click? Windows (or the OS)
+The OS handles the whole system and handles starting and ending programs
+This keeps things organized
+They try to keep this RAM isolated from each other
+The OS is the first thing that runs when your computer starts up
+It puts up the first windows, and then after it is loaded, you can start to run other programs
+You don't think of a digital camera like a computer, but it is the same idea
+When the camera first starts up it is loading the OS
+All of its functions can be thought of as programs
+When a computer first starts up, how does it start running?
+We have to think what computer does the computer run to run programs
+The computer recognizes that it was turned off and that it has just started up
+It runs a simple program that looks around for something that contains and OS on it
+Then it loads that operating system
+This is why it can be called boot up, because it is "picking itself up from its bootsraps"
+
+
+COMPUTER LANGUAGES
+
+We've seen little bits of javascript code, but now we want to connect that code to the cpu
+A pogrammer works in some computer language
+They have "high level" features like groups, if statements, and strings
+These aren't actually present in the machine code
+Programmers write source code in whatever language they are writing
+Most language at the syntactic level look very similar
+How do we get from e.g. C++ source code to the machine code
+One way is a compiler
+A compiler looks at the source code and translates it over to machine code
+i.e. There is an if statement
+There isn't a specific machine code statement that is an if statement
+Instead it is multiple statements so it is translated to those multiple statements.
+This compilation only has to happen once
+It can be done at the factory
+This compilation doesn't work backwards
+This means that you can't get access to the source code
+To fix a bug, you will go back to the source code and change it
+Then you will run the compiler and make a new version of a program
+This gives us a sense of what open source software is
+It is a format where both the program and the source code is distributed
+The two main features are that the source code is typically distributed for free
+The other feature is that there is a sense of freedom
+In open source software, if there is a bug or something that needs to be added, then you yourself can do it
+You can make your own custom version of the software
+There are many different types of license terms for the software
+Most of the time, if you make some change to the source code, you must make it available to the public
+Thus far, we have only talked about C++
+there is a type of languages called dynamic languages
+e.g. java, javascript, python
+these are implemented by an interpreter rather than a compiler
+This takes in code writen in some language and "runs it"
+e.g. web prowlers include javascript interpreters
+It can use the interpreter to run the code
+The interpreter deals with the program one line at a time
+It would look at what the line says and then it does it
+Once it is done with a line, then it does the next line
+The compiler does a bulk translation from the language to machine code
+Interpreters make a translation on a per line basis
+There are many different computer languages and there is no best language
+Broadly speaking, compiled code tends to run faster
+A lot of the detail and decisions have already been made
+Dynamic language tend to have more features in dynamic languages
+Dynamic language code tends to run slower on the cpu
+One example of this is memory management
+This refers to the problem of knowing how long bytes in memory are needed for something
+in c/c++, memory management is, to a degree, manual
+There may be times when memory must be managed manually
+Most dynamic languages have automatic memory management
+No programmer assistance is required
+It will know when memory can be recycled
+The programmer has less to do in a dynamic language, so programmers can get more work done
+However, this also makes dynamic languages run more slowly
+Generally speaking, the trend is towards dynamic languages
+Programmers are scarce, so more work done by a programmer is most effective
+There are lots of cpus, so programmers are more valuable
+On whole, dynamic languages are becoming more popular
+There is a thing called a jit (just in time comipler)
+It tries to get the best of both worlds
+The jit will take parts of the code and try to compile them on the fly
+All modern browsers have jits for programming languages such as javascript
+You don't get quite the performance of compiled code, but you get close
