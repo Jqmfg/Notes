@@ -1,0 +1,92 @@
+/////////////////////////////////////////////////////////////////
+//                       CSS ANIMATION CLASSES                 //
+//                      FOR ANIMATING CSS STUFFS               //
+/////////////////////////////////////////////////////////////////
+
+http://daneden.github.io/animate.css/
+This has css animation resources
+https://github.com/daneden/animate.css
+This is the github page for more info on how to use it
+To use this css package, you first must link the stylesheet with
+  <head>
+    <link rel="stylesheet" href="animate.min.css">
+  </head>
+This will add all of the classes to your html file
+After that you must add in the animated class in order to tell it that you can animate it
+You can also add the infinite class so it loops
+After that you must add one of the following classes for the animation itself
+  bounce
+  flash
+  pulse
+  rubberBand
+  shake
+  swing
+  tada
+  wobble
+  bounceIn
+  bounceInDown
+  bounceInLeft
+  bounceInRight
+  bounceInUp
+  bounceOut
+  bounceOutDown
+  bounceOutLeft
+  bounceOutRight
+  bounceOutUp
+  fadeIn
+  fadeInDown
+  fadeInDownBig
+  fadeInLeft
+  fadeInLeftBig
+  fadeInRight
+  fadeInRightBig
+  fadeInUp
+  fadeInUpBig
+  fadeOut
+  fadeOutDown
+  fadeOutDownBig
+  fadeOutLeft
+  fadeOutLeftBig
+  fadeOutRight
+  fadeOutRightBig
+  fadeOutUp
+  fadeOutUpBig
+  flipInX
+  flipInY
+  flipOutX
+  flipOutY
+  lightSpeedIn
+  lightSpeedOut
+  rotateIn
+  rotateInDownLeft
+  rotateInDownRight
+  rotateInUpLeft
+  rotateInUpRight
+  rotateOut
+  rotateOutDownLeft
+  rotateOutDownRight
+  rotateOutUpLeft
+  rotateOutUpRight
+  hinge
+  rollIn
+  rollOut
+  zoomIn
+  zoomInDown
+  zoomInLeft
+  zoomInRight
+  zoomInUp
+  zoomOut
+  zoomOutDown
+  zoomOutLeft
+  zoomOutRight
+  zoomOutUp
+  slideInDown
+  slideInLeft
+  slideInRight
+  slideInUp
+  slideOutDown
+  slideOutLeft
+  slideOutRight
+  slideOutUp
+For example
+<h1 class="animated infinite bounce">Example</h1>

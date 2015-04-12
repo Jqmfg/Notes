@@ -1,0 +1,277 @@
+      /////////////////////////////////////////////////////////////////
+      //                    Chrome Development Tools                 //
+      //                       CodeSchool Class                      //
+      /////////////////////////////////////////////////////////////////
+
+
+
+CHAPTER 1: ELEMENTS TAB
+1.1
+To open developer tools we will click on settings->tools->developer tools
+shortcut ctr+shift+I or f12
+The elements panel displays a representation of the DOM
+DOM(Document Object Model)
+You can also right click on a specific element and click inspect element
+This will highlight the html and show the css
+You can also select the element select button (magnifying glass)
+You can change elements by selecting the element and then editing the DOM
+This is done in the elements panel
+You can also add or edit attributes
+Right click on an element and then choose add or edit element
+You can also choose to edit as html
+You can even click and drag elements to change their position on the page
+Pressing delete will delete the element as well
+
+1.2
+In addition to editing the DOM, you can also make changes to the CSS
+the styles tab displays the computed styles from the element
+this will show all of the styles from all classes
+You can
+  Display CSS rules for active element
+  Enable/disable properties
+  Edit rules for pseudo-classes
+  Link directly to css source
+The most specific rules will be displayed first
+The check-boxes next to they styles can disable styles as well
+You can double click on the value to change it
+You can also delete the values
+To add a style, click on the + at the top right
+You can add styles with autocomplete support
+Using the button the right of the + icon in the top right corner, you can
+  change the settings for where the mouse is
+Possible styles are
+  active
+  focus
+  hover
+  visited
+You can click on the color swatch to the left of colors to get a color picker
+The style view also lets you know where a specific style came form
+There will be a file link on the right side that will take you to that file
+This brings up the sources panel
+
+
+CHAPTER 2: SOURCE TAB
+
+2.1
+The sources tab lets you
+  modify application source files
+  export changes
+  track file versions
+clicking a file name in the style section of the elements panel will open
+  that file in the sources panel
+The page will instantly change when you make changes
+There will be a star that is over the .css from unsaved changes
+This only saves to the browser
+You can right click and see local modifications that have been made
+It will have a revision history
+There will also be a revision history to toggle changes on and off
+There is also a revert button that will put the file in its original state
+You can also save back to the original source file from dev tools
+Right click->save as
+e.g. overwrite the original source file from save as
+e.g. the discover dev tools extension will be added at this point
+
+
+CHAPTER 3: CONSOLE TAB
+
+3.1
+Allows for javascript debugging
+part log and part command line interface
+bring up the console by clicking console tab
+can write any javascript
+can even use tab for code completion
+Can log events
+console.log('')
+can also send javascript objects to the log
+using console.log(console) gives the console object
+this will show all the functions you can use
+e.g. console.assert(bool) gives a console error if returns false
+
+3.2
+When we refresh the page, we will get an error
+Clicking on the arrow next to the error will bring up the line number
+This line number points to the file that the error occurred in
+from here we can click on this an it will open up in our sources tab
+e.g. this one opens up a .javascript file
+e.g. this error is trying to get the length of NULL
+We can open up the console again by clicking on the symbol in the top right
+Looks like the settings chrome button but with an arrow to the left of it
+e.g. Calendar.events() return NULL
+
+3.3
+Console also gives us helper methods to work with application
+We can perform operations at the header at the top of the page
+$('#title') changes the title
+Sometimes called "bling"
+The console has a built-in one, but it will be overridden by jQuery
+we can use the inspect method
+e.g. inspect($('#date')[0]) for selecting an array
+Chrome will keep a history of selections
+$0 will get the last selection
+$1, $2, etc. will go even further back
+
+
+CHAPTER 4: DEBUGGER TAB
+
+4.1
+The console will log any errors that the console throws
+the dev kit also comes with a debugger to dive deeper into the errors
+we can make changes directly in the dev console
+
+4.2
+e.g. save evenut is calling the same calendar.events() method
+e.g. can call the push() method on NULL
+e.g. at least that's what it looks like
+we will have to pause the code during the runnign
+we can clikc on the pause icon
+the pause icon is the stop symbol with a pause button in the top right corner
+If we hover over a function/method we can see what value it currently holds
+this pause button will pause on an error
+Sometimes code will be condensed with no whitespace for quicker browser loading
+we can set this back to with whitespaces
+click on the brackets in the bottom left-hand corner
+e.g. try catch will cause it to pause
+pressing the pause button again will cause it to skip over caught exceptions
+  NOTE: This has been changed and there is now a checkbox
+can set a debugger break point by clicking on the line number
+this will prevent the line from actually running
+the top left is the execution tools
+the first one (pause with an arrow) causes the code to resume
+this will stop again if there are more breaks and breaks are enabled
+the next one (an arrow over a dot) will cause only the next line to run
+the next is step into (go down into the function being called on that line)
+next is step out (return from the current function into its caller)
+last button deactivates all breakpoints in code
+
+4.3
+Local Storage errors
+e.g. trying to call toLowerCase on undefined value
+click on the resources tab and click up the storage app
+e.g. there we can see keys and add values to them
+
+
+CHAPTER 5: NETWORK TAB
+
+5.1
+Every website is made up of a bunch of network requests
+The network tab holds info on
+  Resource info -size, type, etc.
+  Server response details
+  Timeline of network requests
+Dev tools give you the timeline panel which helps identify bottlenecks
+we will open our dev tools and then refresh browser
+This will display
+  name
+  method
+  status
+  type
+  intiator
+  size
+  time
+  timeline
+To get an idea of how fast the page loads, hold down shift and then refresh
+This will show what happens when somebody first visits the page
+When debugging webpage you will want to disable cache
+Several ways to do this
+File->new incognito window
+This also won't use any cookies you have stored
+You can also go dev tools->gear tool->disable cache checkbox
+The latency shows the delay in the request
+this is the lighter part in the timeline
+Most resources were pulled because it was needed in the index.html file
+This can be whatever main file it is being called from
+the blue line is fired when the DOM is loaded
+the red line is the load event when all the resources are done downloading
+Clicking on the file name of a resource gets more information
+You can preview the resource contents here as well
+Images and fonts will give you a visual preview
+
+5.2
+Google has an extension called page speed
+this will give you analysis on performance of your webpage
+This will give you a new tab in dev tools
+click on the button to start analyzing
+This will give you a score of x/100
+It will also give you suggestions to load pages faster
+You can see how big files are back over on the network tab
+Multiple requests aren't optimal
+This means that you should combine all of the files into one
+Browsers are limited by the number of simultaneous network requests
+There are many different tools you can use to minify javascript libraries
+e.g. google's closure
+There is also a google compiler that you can use
+closure-complier.appspot.com/home
+After minifying, this will minimize some of the requests that you use
+
+5.3
+After making the modification, we can see that we have resolved some issues
+there can be other errors
+e.g. trying to load an image that doesn't exist
+Next we can optimize stylesheet order
+it is best that we have css before javascript
+  css is for display so we need that quickly
+  javascript is usually user interaction which won't be done right away
+Sometimes this won't affect page load time
+add async to script tag
+  e.g. <script asynch src="">
+Only use async if it doesn't matter when the javascript runs
+
+5.4
+Sometimes an image won't be displayed right
+In an ideal world, we would download the size we need
+.png can be better for icons because of large blank space
+
+
+CHAPTER 6: PROFILES
+
+6.1
+Sometimes you can just have slow code running browser side
+Two optimizations: frames view and CPU profiler
+Things that can slow down execution include
+  html loading
+  javascript execution
+  styling
+  painting to screen
+This is where the frames view comes in and tells when frame rate suffers
+Our timeline will be updated with the time it takes to render
+this is in the timeline tab
+
+6.2
+CPU Profiles show which parts of javascript slow things down
+Profiles panel->collect javascript pcu profile
+This will show you the percentage of time something takes
+this is based off of the javascript
+Once the test is redone, we can go to the new profile to look at the difference
+
+
+CHAPTER 7: MEMORY PROFILING
+
+7.1
+A memory leak is when somethings takes up excessive memory
+eventually the memory will build up and crash it
+This can also happen with javascript
+Go go the timeline tab and click on the memory section
+We will hit the record button and then interact with our application
+The graph shows the amount of memory allocated to the application
+More memory being allocated means more and more memory is being allocated
+Note: This is now located under profiles->record heap allocations (I think)
+
+7.2
+We need to figure out what code is causing the memory leak
+a snapshot is what is needed
+profiles->take heap snapshot
+This will show us what javascript causes it
+We will take one heap snapshot
+then go through an event that might be causing it
+then take another snapshot
+to make the comparison select the newest snapshot
+change view from summary to comparison
+select the first snapshot
+e.g. we will see a large number of input elements
+e.g. the elements have been removed from the dom, but not from memory
+e.g. we are creating new input fields every time, but not cleaning them up
+we need  to make sure we aren't creating events outside the event listener
+it is safer to look up nodes every time rather than have a reference
+once you make a change make sure to go back in and take more snapshots
+this will allow you to verify the problem and check for additional ones
+e.g. we are no longer leaving attached elements

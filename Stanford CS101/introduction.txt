@@ -1,0 +1,21 @@
+Stanford University CS101
+About the basic features of how computers work
+We will look inside a computer and get a feel for how it works
+Computers are extremely powerful and profoundly stupid
+The computer world is a mechanical world
+We connect the computer's mechanical side to our human side
+The goal is to understand how computers work and to not be intimidated
+At a high level, the operation of a computer is driven by code
+Code is basically a just a series of instructions
+The computer has the series of instructions and then just follows them
+To run the code means to follow these instructions
+To connect things like these instruction and red eye reduction
+We have programmers to implement that
+The computer programmer has to break it down into simple instructions
+These instructions must be able to be used by the computer
+Any useful feature on the computer was implemented by a developer
+They break down all the information so a computer can do it
+CS101 will look at what code can do
+The programmer gets to be the creative side of this
+The computer is the power side
+Computers are getting more powerful and cheaper

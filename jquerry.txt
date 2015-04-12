@@ -1,0 +1,199 @@
+			////////////////////////////////////////////////////////////////
+			//									try.jquery.com jquery tutorial						//
+			//															jQuery												//
+			////////////////////////////////////////////////////////////////
+
+
+SECTION 4 - LISTENING TO DOM EVENTS
+
+On DOM Load
+display: none; starts an element hidden
+
+('.confirmation').on('click', 'button', function() {
+  $(this).closest('.confirmation').find('.ticket');
+});
+
+.slideDown() slides a css class down (animation)
+.slideUp() slides a css class up (animation)
+.slideToggle() toggles a css class on (animation)
+
+Alert Function
+alert('Hello');
+$('li').length; gives the number of nodes with the given tag;
+
+
+Expanding on on()
+Trying to find hover stuff
+
+Mouse events you can listen to
+'click'
+'focusin'
+'mousedown'
+'mousemove'
+'mouseover'
+'mouseenter' fires when the mouse is first positioned over the element
+'focusout'
+'mouseup'
+'mouseout'
+'mouseleave'
+
+$('.confirmation').on('mouseenter', 'h3', function() {
+	$(this).closest('.confirmation').find('.ticket').slideDown();
+});
+This will cause something to happen when the mouse hovers over <h3>
+
+fucntions are formatted as follows
+function functionName(args?) {
+	stuffToDo
+}
+
+e.g.
+function showTicket() {
+	$(this).closest('.confirmation').find('.ticket').slideDown();
+}
+$(document).ready(function() {
+	$('.confirmation').on('click', 'button', showTicket);
+	$('.confirmation').on('mouseenter', 'h3', showTicket);
+});
+Note that we don't use parenthesis after the showTicket function because we only want it to be called when the event fires, not right away.
+Not sure exactly what this means.
+
+
+Keyboard Events
+
+the following are keyboard events
+keypress
+keydown
+keyup
+
+the following are form events
+blur
+select
+change
+focus
+submit
+
+e.g.
+html
+<input type='number' class='quantity' value='1' />
+
+jquery
+$('.vacation').on('keyup', '.quantity', function() {
+	//Get the price
+	//Get the quantity entered
+	//Set the total to price * quantity
+});
+var price = $(this).closest('.vacation').data('price');  // is equal to '399.99' (string)
+var price = +$(this).closest('.vacation').data('price'); // is equal to 399.99 (int)
+
+The input field itself is triggering that keyup event
+.val(<new value) //sets a new input value
+.val() //gets the input value
+
+e.g. var quantity = this.val(); //incorrect because not jquery object
+var quantity = $(this).val(); //incorrect because returns string rather than int
+var quantity = +$(this).val(); //correct (returns 2)
+
+To access data in a specific value:
+.data(key, value)
+data in html is in the form <div class = "tour" data-daily-price = "357">
+to access you would use $(this).data("daily-price");
+to set a value you would use $(this).data("daily-price" <value>);
+
+
+Link Layover
+In order to get an element to fade in:
+make sure that in the css display: none; is true;
+listen to a click
+
+2 things need to be done
+1. find the comments <ul>
+2. show the comments <ul>
+
+e.g. $(this).closest('.vacation').find('.comments').fadeToggle();
+this will cause the comments to either fade in or fade out
+
+This method makes the screen jump back up to the top when you click on a link near the bottom of the page
+There is a way to get around this default browser behaviour
+we need to add an event handler inside function()
+this will be in the form function(event)
+This merely creates an event handler
+
+event.stopPropagation(); will cause the new node not to bubble up
+this doesn't actually prevent default behaviour from the browser
+this is used to prevent the event to be carried hierarchically to its parents
+
+to prevent this use event.preventDefault();
+this calls the event handler and tells it to prevent the default behaviour
+
+
+
+SECTION 5 - Styling
+
+
+Taming CSS
+
+HTML - content
+CSS - style
+JavaScript - behaviour
+
+to change the css use:
+.css(<attr>, <value>)
+.css(<attr>)
+.css(<object>)
+e.g.
+$(this).css('background-color', '#aaa');
+$(this).css('border', '1px solid #967');
+we can also use multiple .css tags, but it is cleanest to use
+$(this).css({'background-color': #aaa),
+	'border-color': '#aaa'});
+
+One way to change display is .css('display', 'block');
+can also use jQuery objects
+.show()
+.hide()
+
+It is better to move all of this to a css style sheet
+instead, use:
+$(this).addClass('highlighted');
+options are:
+.toggleClass()
+.addClass()
+.removeClass()
+
+
+Animation
+
+Adding Movement
+$(this).css({'top':'-10px'}); //works but will jump
+instead use:
+$(this).animate({'top': '-10'});
+
+we want to check if something has a class and then have it animate after that
+we will use:
+if($(this).hasClass('highlighted'))
+	//code
+else
+	//code
+
+we can also speed-up/slow-down with
+.animate({'top': '-10px'}, rate);
+rate is in milliseconds or fast/slow
+default is 400
+'fast' is 200
+'slow' is 600
+
+should instead do this in css
+e.g.
+.vacation {
+	transition: top 0.2s;
+	//include browser prefixes
+	-moz-transition
+	-o-transition
+	-webkit-transition
+}
+//note that not all browsers will support the css animation and should include
+//the browser prefixes for more support
+.highlighted {
+	top: -10px;
+}

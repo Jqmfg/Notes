@@ -1,0 +1,164 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 2                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+FOR LOOPS
+
+If we look at our original image, we can see its 457x360
+this gives us 164,000 total
+Setting each individual pixel isn't practical
+We want to write just a few lines of code and then have the computer iterate
+This is where for loops come in
+e.g.
+image = new SimpleImage("flowers.jpg");    //opens the flowers.jpg file
+for (pixel: image) {    //for every pixel in this image, do the following
+  pixel.setRed(0);      //sets to red etc.
+  pixel.setGreen(0);
+  pixel.setBlue(0);
+}
+The part inside the braces is called the body of the loop
+In this instance, the pixel is set to black
+In for loops, once it gets to the bottom of the body, it loops back to the top
+The it runs it again and again; once for each pixel in the image
+You will notice that the lines in the body are indented
+This isn't technically necessary, but it is a common convention
+e.g.
+Say we want to remove all the red from the image
+image = new SimpleImage("flowers.jpg");
+for (pixel: image) {  //for every pixel in image
+  pixel.setRed(0);    //removes all the red from the image
+}
+print(image);         //print out the image
+If we remove all the color except for one, then we get that color's channel
+e.g. the red channel
+
+
+IMAGE EXPRESSIONS
+This is the last section that we need to write realistic image manipulation code
+We have things called expressions
+print(11 + 31)    //the 11 + 31 is the expression
+The computer looks at the expression and works out what it is.
+It will compute the answer and use that
+We have expressions in the pixel class we have set up
+pixel.getRed() -> Get the red value
+pixel.getGreen() -> Gets the green value
+pixel.getBlue() -> Gets the blue value
+We will make a relative change to a pixel
+This is a much more realistic way to change values
+e.g.
+//doubles the pixel's red value
+old = pixel.getRed();   //stores the current red value in the old variable
+pixel.setRed(old * 2);  //sets the new red value to the old value * 2
+If our original value was 100, then it would set old to 100, then set the new value to 200
+Instead we will condense this all to one line
+e.g.
+pixel.setRed(pixel.getRed() * 2);
+When the computer runs across this it will evaluate the expression
+It will first get the current red value, then it will multiply it by 2
+then that new value will be inserted in and the .setRed method will be run with the parameter
+Say we wanted to change the green to 75% of what it was before
+we will use
+pixel.setGreen(pixel.getGreen() * .75);
+This gets our current value, then multiplies it by .75
+if we want to do this for every pixel in the image, we would use
+for (pixel: image) {
+  pixel.setGreen(pixel.getGreen() * 0.75);
+}
+print(image);
+Say we want to set red to 75%, green to 50%, and blue to 25%
+for(pixel: image) {
+  pixel.setRed(pixel.getRed() * .75);
+  pixel.setGreen(pixel.getGreen() * .5);
+  pixel.setBlue(pixel.getBlue() * .25);
+}
+print(image)
+We can change all of these values around to change various values in an image
+
+
+IMAGE PUZZLES
+This section just introduces a type of puzzle
+The rgb values in the image have been messed up in some way
+we must right code to fix these values
+We have an example with a bunch of randomly scrambles pixels
+In this case, the green and blue values have been set randomly
+We will start off with
+image = new SimpleImage("puzzle-gold.png");
+for(pixel:image) {
+}
+print(image);
+Lets try getting rid of the green values
+image = new SimpleImage("puzzle-gold.png");
+for(pixel:image) {
+  pixel.setGreen(0);
+}
+print(image);
+Now lets get rid of the blue values
+image = new SimpleImage("puzzle-gold.png");
+for(pixel:image) {
+  pixel.setGreen(0);
+  pixel.setBlue(0);
+}
+print(image);
+Now we just need to get the image itself by rescaling the red
+image = new SimpleImage("puzzle-gold.png");
+for(pixel:image) {
+  pixel.setGreen(0);
+  pixel.setBlue(0);
+  pixel.setRed(pixel.getRed() * 10);
+}
+print(image);
+In this case, what has happened is that the data is exclusively in the red
+It looks off because only the black channel is being used
+This is basically a black and white image, but it's black and red
+For now, we will leave it like this, but later on, we will fix it
+
+
+GREYSCALE IMAGES
+We will talk about how to make greyscale images
+In the rgb scheme, the way to make grey images is to make all channels the same
+For example, if we set all values to 190, then we will get a light grey
+If red, green, and blue values are all equal, we will get some shade of grey
+All black and all white follows that same pattern
+We say those shades of grey lack hue
+If we have something that is 50, 50, 50 then we get a light grey
+If we have something that is 120, 120, 120 then we get a medium grey
+If we have something that is 200, 200, 200 then we get a dark grey
+If we have a picture of the black and red picture, then we can make it greyscale
+e.g.
+pixel= new SimpleImage("liberty-red.jpg");
+for (pixeL: image) {
+  pixel.setGreen(pixel.getRed());
+  pixel.setBlue(pixel.getRed());
+}
+This code will make an image greyscale based off the red channel
+In our sample, we only have a red channel, but we can do it with multiple channels
+Our image now looks black and white, but it looks better than black and red
+If we have a color image, how do we convert it to greyscale
+We want to drain the hue out of it
+We think of the pixels as being dark and light; having some amount of brightness
+We need to decide how bright each pixel should be
+If we have three pixels
+200   50    50  (medium bright)
+0     75    75  (darkest)
+100   250   250 (brightest)
+We can't really tell based on the individual channels
+We can just look at red, green, or blue, we have to look at all three
+We need to compute the average of those three numbers
+There are other ways to do this, but computing the average is simple
+This method will work for our purposes
+e.g.
+image = new SimpleImage("flowers.jpg");
+for (pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+  pixel.setRed(avg);
+  pixel.setGreen(avg);
+  pixel.setBlue(avg);
+}
+print(image);
+This will get the average of our values in each channel and store it in the variable avg
+Then it will set each channel to the value of avg
+We can include calculating the average in each pixel.setX method
+The way we use it only has to calculate it once

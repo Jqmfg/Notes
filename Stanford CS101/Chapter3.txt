@@ -1,0 +1,317 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 3                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+IMAGE LOGIC
+
+Now we have the idea of the for loop
+Now we need to learn the idea of logic
+This will allow us to write tests to see if something is done
+This is done with an if statement
+we can combine this if statement with a for loop
+This will allow us to iterate through all the data and pick ones that we want to do something with
+The syntax of an if statement is
+if(return true or false) {
+  do something
+}
+In our example e.g.
+if(pixel.getRed() > 160) {
+  pixel.setRed(0);
+  pixel.setGreen(0);
+  pixel.setBlue(0);
+}
+This will test each pixel and see if the red value is over 160
+If it is, then it will set that pixel to black (0, 0, 0)
+An if statement will evaluate the test
+If the test is true, then it will run the code
+If the test is false, then it will skip that code
+Say we want to change all of the red in a stop sign image to blue
+e.g.
+image = new SimpleImage("stop.jpg");
+
+for(pixel: image) {
+  if(pixel.getRed() > 160) {
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(255);
+  }
+}
+this mostly works, but we have other areas that it also runs on
+We will refine this later so that it works better later
+Note that there is nothing special about the 160 in the code for the red value
+this was just an arbitrarily chosen value and has no special meaning
+Most likely, we will run several test to see what number is best
+We can think of the for loop as being a hurdle that the test needs to get over
+The new code works better e.g.
+image = new SimpleImage("stop.jpg");
+for(pixel: image) {
+  if (pixel.getRed() > 200) {
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(0);
+  }
+}
+We will change this code later so it works even better
+In our test, we get all of the red, and all of the white
+This is because bright white also has a high red value
+In our test we are just checking if red is greater than 160 (in the original test)
+We don't want this to run on white pixels, even though a white pixel might have RGB(220, 220, 220)
+What happens is the test also catches the white pixels
+Instead, we will use a better strategy
+Suppose we have three pixels
+Each will have red green and blue values
+We can make a bar graph to compare RGB values
+#
+#           #
+# #       # #
+# # #   # # #
+# # #   # # #     #
+# # #   # # #     # #
+# # #   # # #   # # #
+R G B   R G B   R G B
+E R L   E R L   E R L
+D E U   D E U   D E U
+  E E     E E     E E
+  N       N       N
+For the first pixel, we can see that it is mostly red
+The second pixels can be called blue
+The third pixel is much darker, but is mostly green
+We can ask which color "pokes" above the other two
+We have this idea of the average color value of a pixel
+We can combine this with our bar chart
+Then we can draw a line where the average is
+#
+#           #
+#-#--   --#-#
+# # #   # # #
+# # #   # # #     #
+# # #   # # #   --#-#
+# # #   # # #   # # #
+R G B   R G B   R G B
+E R L   E R L   E R L
+D E U   D E U   D E U
+  E E     E E     E E
+  N       N       N
+This gives us a little intuition about what cast a color has
+The nice thing about the average is that it is just a single number
+We can now check if the red is above the average to see if we select it
+To select a pixel's cast, we first calculate the average
+Then we check to see if the red value is above it
+Our new code will be e.g.
+image = new SimpleImage("stop.jpg");
+for (pixel: image) {
+  avg = (pixel.getRed() * pixel.getGreen() * pixel.getBlue()) / 3;
+  if(pixel.getRed() > avg * 1.4) {
+    pixel.setRed(0);
+    pixel.setGreen(0);
+    pixel.setBlue(255);
+  }
+}
+Our 1.4 number that we multiply by is a constant so we can change it whenever we want
+This allows for more flexibility in the code
+
+
+IMAGE BLUESCREEN
+
+for this section we will use the if loop, if statement, and average technique
+then we will make an effect called blue screening
+What we think of as a video is really just 30-60 frames every second
+These frames are just pictures
+This means that we can still manipulate them
+For our old picture, think about the stop sign picture
+For all of the red that we blanked out, we can copy over another picture for the background
+Say we have identified a specific picture pixel
+We will get the coordinates, then get the corresponding picture in another image
+Once we have that corresponding image's pixel, then we will copy it over to the original
+How will we copy a pixel over?
+We will just use the RGB value
+We will write code to get the rgb value from one picture and transfer it over to another
+e.g.
+iamge = new SimpleImage("stop.jpg");
+back = new SimpleImage("leaves.jpg");
+for(pixel: image) {
+  avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+  if (pixel.getRed() > avg * 1.5) {
+    x = pixel.getX();
+    y = pixel.getY();
+    pixel2 = back.getPixel(x, y);
+    pixel.setRed(pixel2.getRed());
+    pixel.setGreen(pixel2.getGreen());
+    pixel.setBlue(pixel2.getBlue());
+  }
+}
+print(image);
+This will calculate the average color values for each rgb value in a pixel
+then, if the red is at least 1.5 times the program will continue on
+if it is, then it will get the rgb values from the other image and set them as the original image
+This will effectively transfer over our second image pixel to the new one for all red dominated areas
+We can compact
+
+
+COMPUTER HARDWARE
+
+In this section we will talk about the physical parts of the computer
+One of the most important inventions of the 20th century is the transistor
+This electronic components is used to build all sorts of things
+The most common form of a transistor today is called a chip
+This is basically a fingernail-sized piece of silicon
+Different electronic components can then be etched onto this silicon
+This means that we can make a lot of electronic parts for really cheap
+The most common component of most chips is a transistor
+All of the things like cpu and memory come down to chips
+A chip is said to be solid state because there are no moving parts
+This makes it reliable
+This is the element silicon
+One of the most important forces driving development is called Moore's law
+This is an observation on the manufacturing of chips
+The law says that
+every 18-24 months, the number transistors that can be fit onto a chip is doubled
+This is not a law of nature, it is just an observation
+However, this has been true for over 20 years
+Moore's law is why we can have computers now that are getting so cheap
+It is the doubling quality of Moore's law
+Computers used to fill a room, now they fill a pocket
+We will talk about he major parts that go into a computer
+We have the cpu, the ram, and the disk or flash storage
+We will talk about each one of these parts
+We have the cpu (central processing unit) the brains of the computer
+the cpu has fairly simple operations that it can perform
+When we say a computer runs at 2 billion opersations/sec we are talking about the cpu
+Whenever we have something executing code, that was the cpu
+We must talk about bytes now
+These are the most common measure of information storage
+One byte is approximately one letter that you can type
+All the sizes of how much something can hold is measured in bytes
+A megabyte is about a million bytes
+A gigabyte is about a billiono bytes
+RAM (random access memroy) temporary storage
+When we say
+new simpleImage();
+This loads the image into the ram
+When we run pixel.setRed(0);
+this goes into the ram and changes values
+The main thing about RAM is that it isn't persistent
+When the power is removed, it just goes blank
+If we think about some paper and then the power goes off, that paper isn't saved (excepting autosave)
+The version that we have is the version that we save
+When we hit save, we are taking the version in RAM and writing it to disk
+Now we will talk about persistent storage
+When we remove the power, the data stays there
+This is usually done with a hard drive
+A hard drive has a magnetic head on it that writes data to a literal disc
+We also have a flash drives
+These are solid state and are very small and very reliable
+These are used to make flash drives or sd cards
+It used to be that per byte, flash drives were much more expensive
+It may be that the hard drive will eventually die out for day to day usage
+When we have a hard drive of flash drive for persistent stoarge, it's not ready on its own
+These are organized into file systems which organize these big areas of bytes into folders and such
+A file is just a way of taking some area and assigning a name to it
+It says "these hundred thousand bytes are for this image"
+Chips, because they have electricity running through them, heat up
+We must use things called heat sinks to prevent overheating
+One of the effects of Moore's law is that we have things called micro controllers
+This is basically cramming a computer into a chip (also called SoC or system on chip)
+Arduino boards are examples of micro controllers
+The idea with arduinos is that you can just have a fun little hobby computer
+
+
+MOORE'S LAW FLASHLIGHT
+
+With LED technology in flashlights, the light can be very bright
+We want a light to be adjustable and very rugged
+This flashlight can solve the problem by using an accelerometer to change the brightness
+As you change the angle with which you hold the flashlight, you can rotate your arm to change the brightness
+This might not be great because you have to read the instructions to know
+But it is still an elegant way to use this in a flashlight
+This is a great example of Moore's law because 20 years ago it would have been crazy to think about this
+This is because you have to cram a computer into a flashlight
+Usually we talk about Moore's law about computers getting more powerful, but they are also getting cheaper
+
+
+HOW A HARD DRIVE WORKS
+
+When you save a file or an image, what happens to it
+There are two major technologies for that currently
+1. flash storage (the new way)
+2. hard drive (the old way)
+We are looking at a 3.5 inch hard drive that is popular in most computers
+Each disk in the hard drive has a coating that is optomized for storing magnitic data
+At the top of the arm is a head with an electromagnet
+To write data, the disk will be spinning and the head will move to be over a particular track
+Then the head will very quickly go through a series of north and south magnetism which will write the data to the disk
+That is how it can take the data and encode it
+To read the data back, the head goes over the right circular track and then the head will notice the pattern of magnetism
+This allows it to recover the pattern of north and south
+As the computer writes data, the head will move back and forth really quckly on the disk itself and will write the data
+It has some scheme to organize the circular track and then write the data
+As it jumps around from track to track, it will make sort of a popcorn sound
+That is the sound of the hard drive writing the data
+
+
+BITS AND BYTES
+
+In this lecture we will talk about bits and bytes
+A bit is the smallest amount of storage you can have
+It can store a 0 or a 1
+Everything in a computer is built up of collections of these bits
+When hardware takes on a certain state it will be in a certain position
+We can switch back and forth between 1 and 0 if we have some mechanism of representing it
+In a transistor, the states or done by different areas of electrons
+In a hard drive, it is the north or south magnetic orientation
+A single bit doesn't do anything for us
+Instead, we organize it into bytes
+A byte is 8 bits
+Most of the time, a byte is about 1 typed letter
+Exactly how much can one byte hold?
+Number of Bits    Distinct Patterns
+1                 0, 1
+2                 00, 01, 10, 11
+3                 000, 001, 010, 011, 100, 101, 110, 111
+4                 0000, 0001, 0010, 0011, 0100, 0101, 0110, 0111, 1000, 1001, 1010, 1011, 1100, 1101, 1110, 1111
+We can think of every other iteration as the last one times two because we have one more bit to represent the first and second instance
+i.e.
+00, 01, 10, 11        000, 001, 010, 011, 100, 101, 110, 111
+                      |    |    |    |    |    |    |    |
+In 8 bits, there are 256 different patters that we can use
+with n bits, we can make 2^n different patterns
+One byte is 8 bits
+with 8 bits we can make 256 different patterns
+How do we use the 256 patterns
+How to store a number in a byte
+start with 0, go up, one pattern per number, until we run out of numbers (255)
+0, 1, 2, 3, 4... 243, 244, 245
+One byte holds the numbers 0-255
+the red value in rgb can be stored in one byte
+In javascript, pixel.setRed() can hold values 0-255
+This is why it takes that range of numbers
+Why is it 255 instead of 256 (256 patterns)
+We have one pattern for 0 so 0-255 instead of 0-256
+
+
+KILOBYTES, MEGABYTES, AND GIGABYTES
+
+In this section, we will step back from small things like bits and bytes
+Inst ed we will look at kilobytes, megabytes, and gigabytes
+A kilobytes is about a thousand bytes
+A small email will be a couple bytes
+A megabyte is about a million bytes
+A rough rule of thumb for an mp3 is that a minute takes about a megabyte
+A gigabyte is about a billion bytes
+This is the most common size that will come up for modern hardware
+4000 MG = 4 GB (roughly)
+A single layer DVD holds 4.7GB
+A terabtye is about a trillion bytes
+This is a thousands GB
+Gigaherz is not a measure of bytes, it is a measure of speed
+This will come up when we talk about cpu speed
+1 GHz is about a billion cycles/sec
+We have talked about megabytes being about a thousand kilobytes
+We have two different schemes
+We have going up by 1000 and by 1024
+When someone says megabyte or gigabyte, they are usually talking about the scale of 1000s
+If we care about distinctions, then there is a set of rules to define the terms exactly
+Nobody uses this except for hardware engineers and low level architects, please ignore

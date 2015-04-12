@@ -1,0 +1,139 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 1                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+CODE WRITING
+
+This section we will look at and practice coding
+This will involve just a little bit of code
+The code elements in this section are very simple
+Later on, we will put these simple parts together to make something complex
+Javascript is a computer language that we will be using in CS101
+It will be Javascript + a little bit of extra stuff
+This is not a full coverage of the language it is just the key ideas
+e.g.
+print(6);     ->    6
+print(1, 2);  ->    1 2
+The left side is what we type into the interpreter
+The right side is what the console outputs
+print() prints something out to the console
+Note that all of these are case-sensitive
+You must ensure that what you type in is something the computer understands
+Javascript is a high-level language so it is easy to understand
+e.g.
+//the line is a comment
+print(6, "hi");             ->    6 hi
+print("hello", 2, "bye");   ->    hello 2 bye
+The data enclosed in the quotations marks are called strings
+The // is a comment marker
+This signals to the interpreter to ignore it
+This lets us make the code more readable
+e.g.
+print("print");   ->    print
+if something is enclosed in double quotes then it is taken as a string
+It is common to have little syntax errors in the code
+They are very quick little fixes and are superficial
+This happens all the time (event to professional programmers)
+This is complicated for beginners, but they aren't a big deal
+e.g.
+print("a");            ->    a
+prlnt("b", "b");       ->    Error:prlnt is not defined line:2
+print("c", "c", "c");
+This happens all the time and just needs to be a quick fix
+It is not something to worry about
+e.g. Error:unterminated string literal line:2
+This just means that you didn't close the quotes for a string
+e.g. Error: missing ) after argument list line: 2
+Sometimes the error code will be misleading and in this case it is
+print("a" "a");
+There is no comma after the first a so the compiler wants it to be closed, but it isn't
+Instead, you just forgot a comma
+Be sure to look out for these misleading errors as they are not always hepful
+
+
+Code Variables
+Introducing variables into our concepts
+e.g. x = 7;
+This will set the variable x equal to 7
+Then, whenever x is used in the code (in appropriate situations) x will be essentially replaced with 7
+We can think of this like a box
+In mathematics, the equals sign means the two sides of the equaton are equal
+In computer science, we are just setting a value
+e.g.
+x = "Alice";
+print(x, x, x);   ->    Alice Alice Alice
+print("I had a crush on", x);   ->    I had a crush on Alice
+This gives us an advantage because we can then change just the value for x
+Then it will change the value everywhere.
+
+
+Digital Images
+This will talk about how digital images work in computers
+In a computer, all of the data is just a bunch of little numbers
+If we zoom in on a picture, then we can see a bunch of little squares called "pixels"
+When we look at a good picture, then we don't notice the pixels because they are so small
+The term megapixel just means 1 million pixels
+Cameras on phones can get between 5 and 20 megapixels
+We can think of a picture as a grid of pixels
+There is an addressing scheme that goes with this
+x and y coordinate axis
+x(0) is the left
+y(0) is the top
+The top left pixel is (0, 0)
+We won't actually mess around with the x-y numbers too much
+We just need to get the concept that pixels will always have a coordinate to describe it
+There are also colors needed to describe it
+In a computer, we think of colors as a pallet
+We have the RGB color scheme (red green blue)
+We need a way of encoding what each color is so we have rgb
+We will use pure red green and blue light and then mix them to get whatever colors we want
+When a color is not being used, we will assign it a value of 0
+When a color is at full brightness, we will assign it a value of 255
+We can make any color by combining the right proportions of red green and blue
+When we have all colors at 255, then we get white light
+When we have all colors at 0, then we get black light
+red + green = yellow
+red + blue = purple
+green + blue = turquoise
+We can also make pastel colors by adding in all colors so that it's sort of foggy
+For CS101 we just need to understand the basic scheme for making colors by varying the rgb values
+RGB is (0, 255), (0, 255), (0, 255)
+e.g. 23, 6, 250
+Our definition of an image for now will be a grid with pixels that are defined by the rgb color scheme
+We have taken the complex image and then reduced it to a failry simple concept
+This is a common theme in computer science
+We will be reducing complex ideas to basic concepts
+For example, instead of saying "make this entire image lighter" we say "add 10 to each RGB value"
+
+
+Image Code
+In this section, we will combine our idea of code with our ideas for images
+e.g. we will look at a file called x.png
+This is a 10x10 black image with a white "X" drawn on it
+.png is an image format (like .jpg)
+To load an image and display it we will use
+image = new SimpleImage("x.png")      //This loads the x.png into memory and saves it into the image variable
+image.setZoom(20);                    //Calls the setZoom function and passes the number 20
+                                      //Shows the image at 20x size
+print(image);                         //Prints the image itself
+we can also deal with individual pixels
+image = new SimpleImage("x.png")      //This loads the x.png into memory and saves it into the image variable
+image.setZoom(20);                    //Calls the setZoom function and passes the number 20
+                                      //Shows the image at 20x size
+pixel = image.getPixel(0, 0);         //This goes to the iamge and then gets a reference to a specific pixel
+pixel.setRed(255);                    //calls a function that the pixel has and passes in the number 255
+                                      //sets the red value for this pixel to 255
+print(image);                         //Prints the image itself
+We also have setRed(x) and setBlue(x)
+These allow us to change the values to whatever we want
+The below link shows the documentation for the functions
+https://lagunita.stanford.edu/courses/Engineering/CS101/Summer2014/courseware/d1714dd9a6f84dd683be1eb737b6dbfe/7a96ffaf52994869a08660eaac191c0c/
+e.g.
+Set pixel (0, 0) to be yellow
+image = new SimpleImage("x.png");   //Selects the x.png image
+pixel = image.getPixel(0, 0);       //Selects the top left corner pixel
+pixel.setGreen(255);                //Sets the green value to 255
+pixel.setRed(255);                  //Sets the red value to 255
