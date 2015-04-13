@@ -121,3 +121,87 @@ It tries to get the best of both worlds
 The jit will take parts of the code and try to compile them on the fly
 All modern browsers have jits for programming languages such as javascript
 You don't get quite the performance of compiled code, but you get close
+
+
+COMPUTER NETWORKING
+
+We will talk about how computer networks work
+They are like a phone systems for networks
+Any computer can place a "call" to another computer
+Starting at the small scale
+A LAN (local area network) can be used to cover 1 floor of a building or a house
+two very common examples of LAN technology are ethernet and wifi both are incredibly common
+Wired ethernet works with wires about the size of a soda straw (cat5, cat5e, cat6 cables)
+terminate in an rj-45 jack which is a little bit bigger than a phone wire
+good for about 100m
+A wireless router will have ethernet cables going into it and coming out
+How is it that data gets from one place to another
+say we have a file on one computer and we need to figure out how to get it to another computer
+The networking layer will break the file into packets
+these packets are fairly small and will be about 1500 bytes
+When computer1 wants to send this image, it will break it into a series of packets
+How do we send one packet on the wire?
+Inside a packet, we have a series of 0s and 1s
+The computer will read through the first packet and then send through the data
+We come up with a scheme
+i.e. for every 1, we will have 3.3V and for every 0 we will use 0V
+The receiver is basically just looking at the wire
+It will see a series of volts
+The receiver observes the pattern of 3.3V and 0V and then translates it into the data
+It will recover what the original byte was
+The receiver reconstructs all of the bytes and makes the packet
+This is how we transmit data from one computer to another
+What about errors?
+On modern ethernet, transmission occurs at about a billion bits per second
+Every now and then, there will be an error
+We use a technique called checksums
+The sender, before it is sent, looks at the packet and adds them up
+We might have a scheme where we use the last two digits of the number that we get for this checksum
+The receive can do the same addition
+Then we will check to see if the checksums match
+If they don't, then the receiver can ask the sender to resend the packet
+This provides a guarantee that each packet comes through correctly
+This scheme is used not just in networking, but in many layers of computers
+This is how we can have a large file on a thumb drive and it will always come through correctly
+The real checksum scheme is a little more complicated
+It is possible that the checksum might fail and the errors cancel out
+We can now scale this up
+How does ethernet scale up to having a bunch of computers all talking to each other?
+The way ethernet works is that we can have a bunch of computers that all share one wire
+The computers can cooperate to share that wire efficiently
+Each computer has a unique address and it wants to send a packet
+Every packet starts with a to: field
+This will tell the packet where it wants to go to
+The computer will wait for silence on the wire
+After there is some silence on the wire, it will transmit the wire
+It is more of a broadcast and the transmission occupies the entire wire
+Every computer will listen to the wire at all times, but it is just looking for packets addressed the them
+Computer1 will look for packets going to it, and along with all the others
+The interesting case for sharing is what if computer1 wants to send a packet to computer4, but computer3 also has a packet to send
+It is possible that both the computers will hear the same computer of silence and both decide to start sending
+If both transmit, then there is said to be a collision. When this happens, the wire becomes garbled
+At some point, the computers notice that someone is talking over them
+If they both just heard the silence again and start transmitting, then there will just be a collision again
+The result is that both computer1 and computer3 wait a random amount of time
+One of them will go first and then we can go back to the regular strategy
+Eventually we can use the wire pretty efficiently
+That is how we can have all these computer connected to just one wire
+Most people are probably not using wires, more likely we are using wifi
+It is basically the same strategy
+The hallmark of ethernet is that we only have multiple computers that share the same wire
+Wifi is basically the same
+There is some radio channel that they all share, and they all transmit on that
+We have collisions and waiting to broadcast just like in ethernet
+The setup
+you have some shared resource that you want to use efficiently
+the solution is to not use a central authority
+instead we have distributed collaboration
+this is very insecure as any computer can be read
+if computer3 wanted to listen to packets for computer4, it could see it
+Anybody on that LAN could listen into the conversation
+This doesn't meant that all security is hopeless, it simply means that other methods are needed
+Another quality is that as more and more computers use this network, the performance for an individual computer degrades
+If one computer is using up a lot of the wire, then there is less time for other computers
+This is a very popular and successful set of design choices
+
+
