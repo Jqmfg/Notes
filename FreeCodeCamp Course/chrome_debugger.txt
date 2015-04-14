@@ -1,6 +1,6 @@
       /////////////////////////////////////////////////////////////////
-      //                    Chrome Development Tools                 //
-      //                       CodeSchool Class                      //
+      //                    Chrome Development Tools             //
+      //                       CodeSchool Class                      	//
       /////////////////////////////////////////////////////////////////
 
 
