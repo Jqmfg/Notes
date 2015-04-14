@@ -1,0 +1,24 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 1                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+INTRODUCTION TO COMPUTERS
+
+It a most basic level, a computer has three functions
+	Input (user-provided input from a keyboard, mouse, etc. Sometimes can be provided from sources like a disk drive or the NIC)
+	Processing (The computer responding to input by completing and action. The CPU does the processing and uses the RAM to manipulate variables)
+	Output (Commonly provided to a printer or screen, although there can be other methods such as speakers or to disk drives when saving files)
+e.g. Say you double click something on your computer, when you do that your comptuer
+	Identifies the extension and opens it with the associated program.
+	Locates that program in the hard drive memory and moves it into RAM
+	From there, the computer actually runs the program
+	The computer sends the results to the graphics card to show the process of the program starting
+	When the program is started, the computer moves the file loaded into that program
+	From here, the computer can start taking user input
+Note: IPO computer troubleshooting can often be reduced to identifying what is not working (input, processing, or output.) This make make it much easier to troubleshoot.
+The preceeding IPO process is constantly repeated.
+Despite doing so much work, computers are still pretty dumb. They can only do what they are told to do.
+They work with numbers very quickly.
