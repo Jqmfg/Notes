@@ -168,3 +168,68 @@ This is a feature for how a lot of web pages work
 It allows you to put in a video just like we put in images
 This is just now coming into use
 In the same way that images work very reliably, so too could video
+
+
+SPREADSHEETS
+
+We will talk about spreadsheets in this section
+They are a great invention that makes it really easy to do a lot of math stuff
+There is a standard format, the .xlsx format, that all programs can use
+Having your data in a standard format has a lot of consumer benefits
+It benefits the consumer if you have all your data in that format because you can change easy
+Some programs that you can use include google docs (drive), libre office, and one drive
+In this example we will use a Catnaps spreadsheet
+This speradsheet is just a big grid that can hold just about anything
+It is organized in a letter-number scheme which provides a nice addressing scheme
+Right now, this is just raw data
+We want to add computation to this
+To add a number, we can simply write 22 or whatever we want to type in there
+Now we will try to add a computation
+Say we want to add B15 and B16
+If the first character in your tile is an equals, then it will change that tile into an equation
+Thus we can do =B15+B16 to get the sum of B15 and B16
+You might have to double click to get the formula
+Oftentimes, it will show you colors corresponding to the tiles you are using
+To sum a column we will use =sum(B3:B16) which will sum B3 to B16
+This colon is a way of saying this range of cells
+It is super nice that we can just add up numbers like that
+The sum will update automatically
+Once again, we can double click to show the underlying formula
+If we single click, then we can also see the formula on the top of the screen
+A related feature is the ability to computer the average
+We can do this with =average(B3:B16) to computer the average of B3 to B16
+There are several formulas that are built into spreadsheets
+We have worked this out for one column, but we want to do it for all of them
+We will click in this cell, and then drag and fill in the rest of the columns
+This will fill in the rest of the columns, but fill it in relatively
+It does it how you would intuitively expect
+We can also make a chart of the data
+We can select all of the data we want and then click through menus to make a chart
+We can make several different types of graphs and have it automatically calcualted for us
+This is one way of doing data analysis (graphically), but we can have the numbers right next to it still
+
+
+COMPUTER SECURITY 1
+
+Computer security is a kind of scary dramatic topic, but it doesn't need to be
+Staying safe isn't that hard
+For starters, we will establish a model of the computer
+We can regard the computer as a castle
+The computer has a sort of wall that is around the computer, and the "bad guy" is outside the wall
+People can't just magically steal your data from outside this wall
+They will try to get from outside to the inside
+We will look at the different attacks that they can try to do
+The "bad guys" are working in bulk
+They aren't targetting any one person specifically, but they are just trying to snag the odd victim
+You don't need to have amazing security, you just need to avoid the common mistakes
+The first type of attack is a simple password attack
+This is just when they try to guess your password
+The trick to avoid this password problem is to just avoid very obvious or very common problems
+They should never be something in the dictionary and shouldn't be a simple pun or anything
+They have an idea that doesn't get the password many times
+But they can iterate a lot, and eventually they will get some so they keep trying
+You can get a list of the top passwords
+The top passwords are password, password1, 123456789, etc. 
+Your email password is important in particular because you can reset several passwords from that
+Another problem that could arise is that a websit can be compromised
+If you reuse the passwords, then they can get into multiple accounts
