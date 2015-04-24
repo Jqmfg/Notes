@@ -205,3 +205,108 @@ If one computer is using up a lot of the wire, then there is less time for other
 This is a very popular and successful set of design choices
 
 
+THE INTERNET TCP/IP
+
+In this section we will go from LAN to the internet
+We can think of the internet as a phone system for computers
+It is scattered all over and every computer has an address
+Every computer can call any other computer
+The internet is based on government funded research
+This created TCP/IP
+These are open standards and have been enormously succesfull
+For basic infrastructure, it is good to have an open standard
+Every computer connected to the internet has an IP address
+IP - Internet Protocol e.g. 171.64.64.166, 173.255.219.70
+These are ipv4 addresses
+There are ipv6 addresses, but they aren't common.
+IP addresses are 32 bit
+range from 0-255
+xxx.xxx.xxx.xxx format
+There are ranges of IP addresses assigned to certain areas
+Localy the righthand numbers experience the most change
+They are like phone numbers, they will have a country code/area code
+We also have common names like google.com or codingbat.com
+They are like ip addresses, but they use regular words
+There is a worldwide directory that gets translated into an ip address (DNS - Domain Name System)
+Routers are bits of networking equipment that connect multiple networks
+They pick up a packet on one side and translate it over to another network
+The router will provide a service for the computers that are connected to it and connect them to the internet
+The computes will send the packets to the router, and then the router will send off that packet to the internet
+The router will be the only one (usually) directly connected to the internet and then will provide the rest of the computers with it
+The packets move around the internet through a bunch of little hops
+Say that we want to send a packet from 171.64.64.166 to 173.255.219.70
+We will send it through multiple other IPs in order to get that packet to its destination address
+At the smaller routers, there is not much happening
+Further "upstream", the packets will be sent to multiple core routers which are much more complex and faster
+These core routers will send the packets around the internet and eventually back downstream to the destination
+Routers don't know the entire route, they just know locally what is going on
+The local computer doesn't know anything about the topography of the internet network, it just sends the packet
+The routers themselves are dynamic and will constantly manage broken and slow routers
+They are a distributed system and will work together in order to get the packet where it wants to go
+There are also special local IP addresses that are reserved for LANs
+10.x.x.x, 172.16.x.x and 192.168.1.x (etc.) are reserved for these LAN
+
+
+TABLE DATA
+
+In this section, we will look at a new form of data called a table
+The code to work with tables will look similar to the code in images
+The goal for this section is to start to understand the patterns that come through
+For this demonstration, we will use a list of baby names along with other characteristics
+Tables are just ways of storing data
+The data in this table is organized into 4 tables and several rows
+Rank 1 for this dataset means that it is the most popular name for this data
+This is done dependent on age
+This table just has all the names (in this case sorted by rank) with 2000 rows overall (1000 top boys and girls)
+A database is a related concept to this idea of a table
+The number of fields is not very bit (there might be only 8-10 categories)
+The number of rows can be enormous (sometimes in the millions or billions)
+We can think of our email inbox as sotred in a table
+The fields might be things like to, from, data, subject, etc.
+The rows can have as many as the amount of emails we have
+The fields are the categories that we want for that particular table
+There are many things that we deal with day to day that are stored in a computer in a table like structure
+We will use the baby name table for several sections
+e.g.
+table = new SimpleTable("baby-2010.csv");
+for(row:table) {
+  print(row);
+}
+for images we had for(pixel:image) for tables we have for(row: table)
+This is this means for each (pixel/row) in (image/table) we will do the following commands
+In the above case, we are just printing off the row
+This will print of all the 2000 names.
+It will show that this line (print(row);) runs 2000 times
+You may have noticed that the table is in a .csv file
+This is a "comma separated value" file and is a common format for storing tabular data
+Just looping through and printing each row is not what we usually want to do
+Usually, we will just want to pick out the few that we do want to print out
+In database terminology, this is called a query
+We will put an if statement inside the loop
+In the if test, we will write a test to only select some of the rows
+The code
+if (row.getField("rank") == 6) {
+print row;
+}
+This will print out only the rows where the rank category is equal to 6
+This if loop will be tested all 2000 times, but will only run the code inside it twice (because we have a boy and girl at rank 6)
+Each field in this has a name (i.e. "name", "rank", "gender", "year")
+This code will go to the "rank" column and check to see if the value there is 6
+We use the == to compare if the two values are equal
+We would logically think that we should just use = to check for equality
+The single = is for assignment, the == is used for comparison
+The basic pattern for this is 
+for(row: table) {
+  if(row.getField("") == "") {
+    do stuff;
+  }
+}
+We can also print off the top 10 ranks with
+if(row.getField("rank") <= 10) {
+  print(row);
+}
+This means if the rank is less than or equal to 10, then we will print off that name
+We can print off only the girls with
+if(row.getField("gender") == "girl") {
+  print(row);
+}

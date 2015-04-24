@@ -22,3 +22,29 @@ Note: IPO computer troubleshooting can often be reduced to identifying what is n
 The preceeding IPO process is constantly repeated.
 Despite doing so much work, computers are still pretty dumb. They can only do what they are told to do.
 They work with numbers very quickly.
+Humans count numbers with the decimal system (1-10), but computers use binary.
+									|		10^3		|		10^2		|		10^1		|		10^0
+Decimal Value			|		1000		|		100			|		10			|		1
+Number						|		2				|		3				|		5				|		7
+Calculated Value	|		2000		|		300			|		50			|		7
+The only difference between binary and decimal as that binary uses base 2 instead of base 10
+A value of 1001 in decimal has a value of 9 in binary.
+Although computers will always work in binary, it is usually easier for us to read them in what we call hexadecimal.
+This uses the numbers 1-f for a total of 16 numbers.
+Decimal		Binary		Hexadecimal
+0					0000			0
+1					0001			1
+2					0010			2
+3					0011			3
+4					0100			4
+5					0101			5
+6					0110			6
+7					0111			7
+8					1000			8
+9					1001			9
+10				1010			a
+11				1011			b
+12				1100			c
+13				1101			d
+14				1110			e
+15				1111			f

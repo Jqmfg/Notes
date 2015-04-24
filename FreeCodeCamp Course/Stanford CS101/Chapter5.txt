@@ -1,0 +1,210 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 5                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+TABLE STARTSWITH ENDSWITH
+
+In this section, we are going to add on a test to our previous baby name data
+We will look at the functions startsWith and endsWith
+These functions work with strings
+we have
+table = new SimpleTable("baby-2010.csv");
+for(row: table) {
+  if(row.getField("name").startsWith("Ab")) {
+    print(row);
+  }
+}
+The function .startsWith("") checks to see if the string starts with the other string
+In the above example, we would be returned the names abbey, abigail, etc.
+This function is case-sensitive and all the names in this data start with an uppercase letter
+This means that we don't ge anything return if we search for startsWith("a")
+We can also use the .endWith("") function which checks to see if a string ends with a certain string
+These are fairly self-explanatory functions
+It is possible to write an if function where everything is evaulated to false
+The computer doesn't care
+e.g. row.getField("name").endsWith("a") and we will get names like layla and ella
+
+
+TABLE BOOLEAN LOGIC
+
+In this section, we will combine the simple tests with other tests
+In javascript, the symbol for and is &&, the symbol for or is ||, the symbol for no is !
+e.g.
+if(row.getField("name").startsWith("A") && row.getField("name").endsWith("y")) {
+  print(row);
+}
+This will print off all the names that start with 'A' and end with 'y'
+In this case, the test is kind of long, and it can get a little long for one line
+We can just as easily do the tests on two different lines
+Putting in spaces and new lines doesn't mess up the code i.e.
+if(row.getField("name").startsWith("A") && 
+   row.getField("name").endsWith("y")) {
+It is a pretty easy error to forget parenthesis this way like
+if(row.getField("name").startsWith("A") && 
+   row.getField("name").endsWith("y") {
+Here, we forget the last parenthesi, and the code will not compile
+We also cannot write
+if(row.getField("name").startsWith("A") && endsWith("y"))
+We must write the whole thing the 2nd time or the code will not know what to do
+We can also use OR (||) e.g.
+if(row.getField("name").startsWith("X") || row.getField("name").startsWith("Y") || row.getField("name").startsWith("Z"))
+This will return all the names that start with 'X', 'Y', or 'Z'
+We can test the loop when it is halfway done with only
+if(row.getField("name").startsWith("X") || row.getField("name").startsWith("Y"))
+This will still work and is it good to see if the code still runs as expected
+The || for OR came about because some language early on used it
+Several other languages decided to just go with it becasuse it was the convention at the time, and now it is common
+
+
+TABLE COUNTING
+
+Thus far, we have done a test and printed the row if it matches what we want
+This time, we will count the number of rows that match our requirements
+There are three things that must be done in order to count
+1. Introduce a new variable outside of the loop
+2. Inside the loop, we will add one to the variable
+   i.e. count = count + 1;
+   This looks weird, but it doesn't actually check to see if they are equal, it will set count equal to count + 1
+   The form x = x + 1 bumps up the value of x by 1 each time it is run
+3. Print off what value is left after the for loop has done its magic
+e.g.
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for(row: table) {
+  if(row.getField("name").startsWith("A")) {
+    count = count + 1;
+  }
+}
+print("count: ", count);
+This will look for all of the names that start with 'A' and then print off that value at the end of the program
+
+
+TABLE COUNTING MULTIPLE
+
+Up to now, we have looped over if statements to count one thing
+Usually, we will want to count and compare multiple things
+e.g.
+table = new SimpleTable("baby-2010.csv");
+count1 = 0; // boy counter
+count2 = 0; //girl counter
+for(row: table) {
+  if(row.getField("name").startsWith("A") && row.getField("gender") == "boy") {
+    count1 = count1 + 1;
+  }
+  if(row.getField("name").startsWith("A") && row.getField("gender") == "girl") {
+    count2 = count2 + 1;
+  }
+}
+print("boy count: ", count1);
+print("girl count: ", count2);
+The if statements that we have are one after another, they are not inside of each other
+We can use as many counters as we want and with whatever tests we want
+The above example will print out the number of girls and boys so we can compare them
+We could also write an if statment to compare them and only print out the larger one i.e.
+if(count1 > count2) {
+  print("There are more girls with count: ", count1);
+}
+else {
+  print("There are more boys with count: ", count2)
+}
+Note that this doesn't take care of the case if they are the same
+One thing that we can do is make a google form and take survey of a bunch of people
+From there, we can export that data as a .csv file and then used it in our table
+We will use the file "survey-2012.csv"
+one thing that we can do in order to clean the results is convert everything to lowercase i.e.
+table.convertToLowerCase();
+Say we have a column with soda and we wanted to print every favorite soda
+we can do
+for(row: table) {
+  print(row.getField("soda"));
+}
+We can also count the favorite sodas i.e.
+count1 = 0; // Sprite
+count2 = 0; // Dr Pepper
+count3 = 0; // Coke
+for(row: table) {
+  if(row.getField("soda") == "sprite") {
+    count1 = count1 + 1;
+  }
+  if(row.getField("soda") == "dr pepper") {
+    count2 = count2 + 1;
+  }
+  if(row.getField("soda") == "coke") {
+    count3 = count3 + 1;
+  }
+}
+print("Sprite count: ", count1);
+print("Dr Pepper count: ", count2);
+print("Coke count: ", coun3);
+This is similar to our other tables
+Note that we can type everything in lowercase because we converted it all to lowercase first
+We can also count for people who misspelled it with || e.g.
+if(row.getField("soda") == "sprite" || row.getField("name") == "diet sprite")
+This example allows us to combine multiple techniques
+
+
+ANALOG VS DIGITAL
+
+Analog vs digital is like entropy, its hard to know exactly what someone means
+What is analog vs digital?
+We will start off with analog
+The world is basically analog
+The running example that will use today is sound
+Sound is basically pressure waves (minutes increases and decreases in pressure)
+It is described as travelling out through the air like waves moving through a pond
+Many sounds that we hear in day to day life have a kind of repetitive pattern
+We can draw the comparison to a violin
+The wood in a violin flexes out and in a little bit and will create little pressure waves in the air and travel out in all directions
+The signal in the waves will translate into the air, and eventaully to our eardrums
+The thing about analog, is that the shapes are the same
+The sound is basically reproduced in the air
+In your ear there is a little eardrum whihc is pushed in and then out a little bit
+This is very analog
+We have something on the violin which is then translated through the air and the shape is preserved
+We jump from step to step, but the shape is preserved
+We will use oscilloscopes as an example
+An  oscilliscope takes in electricity on a pair of wires and will observe the voltage over time and reproduce it on screen
+This is something that is very abstract, but the oscilliscope makes it real
+These things have been around for a long time
+The oscilliscope will draw the signal off of the wire and then draw it on screen
+The image will be a sine wave
+It has this nearly perfect bell-like sound
+e.g. the electricity coming off the speakers is making this sound and the oscilliscope is drawing it on screen
+We will talk about some of the qualities that frequencies have
+Frequency is how many cycles per second we have from a note
+If the frequency is higher, then we will have a higher note
+A greater number of cycles per second gives us a high frequency
+Going up one octave is exactly a doubling of the frequency
+Amplitute is how big the pressure wave is
+This is how hard the synthesizer is pushing on the air
+The frequency will not change, but the heigh of the wave will
+The timbre is the shape of the wave
+In the sine wave, there is no timbre because it is nearly perfect
+If we switch to something else e.g. flute then the timbre will change
+In this room, there is one body of air, but we can have multiple sounds in the air going on at the same time
+We can hear multiple things at the same time, so how does that work?
+When we play multiple notes at the same time, the pressure waves add on top of each other
+However the waves add together (in each part) they will add together
+If we play a low one and a high one, then we can see a high one and a low one add onto each other
+We can isolate each of the sounds
+The brain can parse out the two sounds that are going into it
+There is an almost eerie relationship between sounds and mathematics
+A chord occurs when the peaks and valleys of two or more notes sort of add up
+A chord is mathemetically when it evenly divides up
+That is a signal/wave
+Now will transfer this over to how computers work
+The original telephone system worked by turning the pressure waves in the air into electrical current
+The result is an analog signal
+Eventually the wires will get down to the other end and translate the electricity back into sound
+The pressure wave is turned into electricity and then back into the air
+We can also talk about noise
+This is the hissing that you get
+If we have a perfect sine wave signal, then there are possibilites for it to get messed up
+It doesn't come out looking perfect
+What happens is there is a little bit of what we call noise or error
+It is basically fuzz around the signal and a "jaggedness" to the signal
+When it gets out the other side, there will be extra noise added on top of the original
+Noise has a distinctive sound

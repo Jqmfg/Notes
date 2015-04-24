@@ -1,0 +1,170 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 5                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+ANALOG AND DIGITAL 2
+
+This is how digital works
+We have a signal and to make it digital, we want to take the signal in and change it to a series of numbers
+Instead of the sine wave, it will look like the rgb data that we had
+This is called digitizaiton
+The process of taking in analog and reducing it to digital
+We are going to run a system that will measure the height of the curve very quickly
+e.g. The audio cd format digitizes sound and samples 44000 times/second
+The samples will be very tightly spaced against the curve, so it will be pretty good
+We will make a "zero" line, and we will record it as a series of positive and negative numbers
+We will look at how high something is above the 0-line
+Most audio CDs will have about 32000 be the max
+the first sample could be something like 1100
+The second sample (1/44000 of a second later) would be the next sample at 1102 or something
+We will take a signal in and reduce it to a stream of numbers
+There are 2 sources of problems
+1. Let's say that we are guaging the first sample and we pick 1003
+   The actual number could be between 1003 and 1004, but we have to pick one of them
+   There is a little bit of error
+   CDs will use between -32000 and +32000 which is how much you can store in 2 bytes
+   These 2 bytes will give us how many numbers we can have
+2. What if the signal had some big excursion like it went way up and then down before the next sample
+   It turns out that if that happened (on a CD scale) it would be outside of human hearing
+   This means that it's not that big an issue
+After we have digitized it, then we can store it in some file
+How do we get this back to analog now?
+This is called digital to analog conversion
+There is a piece of hardware that specially does this
+The phrase that comes to mind when this happens is connect the dots
+This job is to make a pattern that follows the original as close as possible
+It will look at the first number like 1003 and put a "dot" there
+It will take the next sample e.g. 1720 and then put another "dot" there
+Then it will draw a straight line between them
+Because audio cds are so close together, this works pretty well
+This will recreate the signal very closely
+We can then put this into a speaker and then have it play us back the sound
+The digital to analog chip is called a D/A Converter
+Why do we go to all this trouble?
+We take all this data and then put it in the "digital domain" rather than the "electricity domain"
+Advantages for digital
+1. Errors
+   In the computer, we just have a pattern of 0s and 1s that makes up the audio cd
+   When we feed this into the D/A converter, then we have music
+   On an audio cd, there are actually little peaks and valleys at the 1s and 0s
+   To read a cd, there is a laser that will try to read theses littl epeaks and valleys
+   The laser is looking at the cd and it will read the bits off of the cds
+   When we write the data to the cd, there is still noise
+   However, it is still easy to tell if it is a 1 or a 0
+   This is why digital sounds better, because the signal that we care about has a lot of noise resistance
+   This isn't perfect: there could be a mistake that gets put on, but it's much better than with analog
+   Noise elimination is a huge benefit to digital over analog
+   CDs are very resistant to little dust and such on them
+   The cd actually is marked with little checksums and has copies of the music on it
+   It can swap bad tracks with good ones if it is messed up
+2. Suppose the numbers that we have coming off the audio cd are like 12000, 12002, 12006, 12007, 12010, etc.
+   These numbers are pretty near to each other, but the change between them is pretty small
+   This means that we can use a compression scheme to compress the bytes and not take as much room
+   Instead of recording every sample, we can just record the difference of every sample to the next
+   e.g. 1200, +2, +4, +1, +3, -5, +1, etc.
+   Instead of having to take up 2 bytes, we can take up only a few bits
+   Playback will still work as long as it knows the scheme
+   We would call this a delta scheme because we are recording the deltas
+   We would then feed these samples into the D/A converter and play back the sample
+   We might be able to record a song in half as much space because of this compression
+   Most things like songs, pictures, and video are stored in a compressed format
+   For the most part, images don't tend to jump around randomly
+   There is usually a pattern to it
+   This is called lossless compression because we have changed the data round to take up less space
+   However, we haven't given up any fidelity
+   We have simply added complexity to take up less space
+   Analog data cannot be compressed in this way
+.png files are also lossless
+It takes in a bunch of pixels and rearranges them to take up less space, but no data is lost
+The alternative to lossless compression is lossy compression
+Lossy compression lets you take up a lot less space
+However, on playback, it won't reproduce the data exactly, but it will come pretty close
+.jpg files are an example of a lossy format
+It will take up a lot less space, but it won't be a perfect copy
+A simple example of a lossy compression would be dropping every other number
+This would take away half the data, but you would lose a lot of the data
+This is a lossy compression format
+e.g. if we had 
+12000, 12002, 12006, 12007, 12010, 12005, 12006
+from this we would have
+12000,        12006,        12010,        12006
+The D/A converter would then insert values as a guess between this
+For the most part, this compression will work very good, but little adjustments have been made
+Any media data that we have like .jpg, .mp3, etc. make heavy use of lossy compression
+In particular, video data makes use of lossy compression
+However, we can compress a lot of video quite a bit and still have it be pretty close
+.mp3 data works out to about a megabypte/minute
+.mp3 was the result of a lot of research.
+They would play a lot of music and then check to see what ommissions we can hear
+This was a lot of work and research to make everything more efficient
+There has even been more research since then to make it even better.
+
+
+DIGITAL MEDIA
+
+We will briefly see some examples of images and sounds and talk about video a little bit
+.jpg is the famously lossy format
+JPEG stands for Joint Photograhpic Expert Group
+They existed to come up with the format for storing a compressed image
+It has now become an extremely widespread standard
+This is an open standard so anybody can use it
+If a camera stores the image in a .jpg then anything else can use it
+It will work basically everywhere
+When we store a .jpg image, there is a level of quality that we can set
+We will call this the Q number
+If the Q number is set to 10 then there is the least data lost, but it takes up the most space
+Most people don't use Q10, the trade-offs are terrible
+Most people use Q5 or Q6 because the data that it looses is basically imperceptible
+Some cameras have a .raw format which takes in no lossy data
+Everything is completely untouched
+The term for visual mess ups that you can see are called artifacts
+If we turn the quality down all the way, then we can clearly see the artifacts
+In particular, if we zoom in, we can see its effects
+The way .jpg works is by grouping the pixels into 8x8 groups and then compressing those groups
+This is one jpg artifact that we can see
+We can also see artifacts at really sharp boundaries between one color and another
+Instead of having a clean line, it is sort of a fuzzy blur
+The time that you will see it most is in video encoding
+The compression for dvds results in this same kind of artifact
+Satelite tv also has the same artifacts
+The way they fit all 150 channels is to just turn the quality down and compress it very heavily
+It uses up few bytes because the video is getting more and more compressed
+We can work out how many pixels a picture should take up
+e.g. a 400x300 images has 120,000 pixels
+If every pixel has 3 bytes, then it should take up 360000 Bytes or 360 KB
+Instead, we can get really good compression (nearly 10x) without a noticable difference
+jpg is geared for real world cases where things sort of blend together
+AAC is a slightly better audio compression format from apple
+Ogg Vorbis is another free and open standard (.ogg)
+On to video formats
+Video data takes even more data than audio (it takes the most)
+We can think of it as a series of images and audio
+This makes for a huge amount of data
+The good news is that we can also compress this a lot too
+Most of the pixels from one picture to the next doesn't change that much
+Instead of encoding the frame on its own, we can just encode the difference
+Even without being lossy, there is a lot of redundance there
+All of the video formats take advantage of that
+This still makes for a lot of data, but it is more manageable at this point
+Video takes about 1GB/30min or 2GB/hour
+There is this group called the Motion Picture Experts Gorup that standardizes DVDs and bluerays
+They also standardize formats for youtube and flash videos, etc.
+Unlike jpg, these are heavily patented
+Google wanted to make a format of video compression that would be open and free
+The WebM project tries to do this
+Right now, there is a patent contriversy between this and MPEG
+h.264 is a very widely used compression format (codec) that works very well
+This is another closed source format
+Youtube is probably the most common way to watch video on the internet
+There is a certain amount of technology that it takes to play all this
+Historically, they have used flash which isn't actually a standard
+It is actually a product from adobe
+Adobe is sort of the odd one out and doesn't fit in with how the rest of the internet works
+This is where HTML5 comes in
+This is a feature for how a lot of web pages work
+It allows you to put in a video just like we put in images
+This is just now coming into use
+In the same way that images work very reliably, so too could video
