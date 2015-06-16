@@ -1,0 +1,123 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 2                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+FILTERS AND A NEW DIRECTIVE
+
+In this section we will talk about:
+  filters
+  more directives 
+  keeping your code clean
+We have ng-app to add the application module to the page
+ng-controller to attach a controller function to the page
+ng-show to display a section base on an expression
+ng-repeat to repeat a section for each item in an array
+In our current example, we can also use some twitter bootstrap elements
+<body ng-conrtroller="StroreController as store">
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="product in store.products">
+      <h3>
+        {{product.name}}
+        <em class="pull-right"${{product.price}}</em>
+      </h3>
+    </li>
+  </ul>
+</body>
+Angular has a better way to deal with currency
+We can use the currency filter in our price expression
+{{product.price | currency}}
+Note that this will automatically add a $ to the price
+This means we pipe in the first result into the currency filter
+This will change $2 to $2.00
+Angular has a bunch of filters and they all follow the format {{data | filter:options}}
+We can specify a date format or an uppercase format etc.
+date
+{{'123881234123434' | date:'MM/dd/yyy @ h:mma'}}                12/27/2013 @ 12:50AM
+uppercase & lowercase
+{{'octagon gem' | uppercase}}                                   OCTAGON GEM
+limitTo
+{{'My Description' | limitTo:8}}                                My Descr
+orderBy
+<li ng-repeat="product in store.products | orderBy:'-price'">   List products by descending price
+Changing the -price to a price would result in listing products in ascending order
+Each product has pictures with it
+In our .js file we now have
+var gems= [
+  {
+    name: 'Dodecahedron Gem',
+    price: 2.95,
+    description: '. . .',
+    images: [
+      {
+        full: 'dodecahedron-01-full.jpg',
+        thumb: 'dodecahedron-01-thumb.jpg'
+      },
+      {
+        full: 'dodecahedron-02-full.jpg',
+        thumb: 'dodecahedron-02-thumb.jpg'
+      },
+    ]
+  }
+]
+To display the first image in a product we might call
+{{product.images[0].full}}
+If we took this and put it as an expression inside the src attribute of an image tag, then it wouldn't work
+We need to use the ng-src directive
+<img ng-src="{{product.images[0].full}}"/>
+If we jump back into our browser, then we can see that all the images are showing properly
+
+
+TABS INSIDE OUT
+
+In this section we will add some more interactivity to our website by adding tabs
+We want to have description, specifications, and reviews tab
+Twitter bootstrap comes with classes that makes it easy to add tabs
+You can do this with "nav nav-pills" class
+How do we add behavour to these tabs
+One way to do this in angular is using the ng-click directive which takes an expression to evaluate
+We will say ng-click="tab = 1", ng-click="tab = 2", etc.
+If we want to print out the value to the page
+We write {{tab}} as an expression
+If we click on the different tabs right now, the tab value will get printed out to the screen
+Just by clicking on the different tabs, it changes the value
+When we click on one of the tab icons, the tab expression automatically gets updated
+Expressions define a 2-way data binding
+Expressions are re-evauluated when a property changes
+If the expression does get changed, it gets updated in the webpage
+Now we need to add the tab panels
+How do we get the proper panel to show up when we click on the proper tab
+We will use ng-show again with ng-show="tab === 3"
+When a tab is selected, it will show the proper panel
+When we refresh the page, none of the panels are initially showing up
+It is good to set an initial value for tab
+The ng-init allows us to evaluate an expression in the current scope
+We can write ng-init="tab = 1"
+If we jump back into the browser, we can see that tab is initialized to 1
+Wouldn't it be nice to see which tab is active
+How can we detect which tab is active and then add a class
+To do this, we need to use a new directive the ng-class directive
+We will send in an object
+ng-class="{ active:tab === 2 }"
+The class we want to set is active and the expression is tab === 2
+If it evaluates to true, then the active class is applied
+The active class is no activated
+We need to figure out how to pull the logic out of the html and organize it in somewhere else
+The best thing for this might be a controller
+We will use a PanelController
+ng-controller="PanelController as panel"
+in our app.js we will define PanelController
+Initialization should go instide the controller
+our app.js will look like
+app.controller("PanelController", function() {
+  this.tab = 1;
+  this.selectTab = function(setTab) {
+    this.tab = setTab;
+  };
+  this.isSelected = function(checkTab) {
+    return this.tab === checkTab;
+  };
+})
+If we jump back over into the browser, we can see the behavour hasn't changed

@@ -1,0 +1,33 @@
+/////////////////////////////////////////////////
+//                                             //
+//              Twitter Bootstrap              //
+//                                             //
+/////////////////////////////////////////////////
+
+
+Twitter bootstrap is a popular responsive CSS framework
+You can add bootstrap to any app by including it as a stylesheet
+<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/boostrap/3.3.1/css/bootstrap.min.css'/>
+Include this at the top of your html
+bootstrap will figure out how wide your screen is and respond by resizing your html elements
+That is how responsive design gets its name
+With responsive design, there is no need to design a mobile version of the site, it will look good on screens of any width
+img-responsive make and image responsive
+You can make a bootstrap button with <button class='btn'>
+You can make a bootstrap block button with <button class='btn-block'>
+You can make a button a primary button with <button class='btn-primary'>
+You can make a bootstrap info button with <button class='btn-info'>
+You can make a bootstrap danger button with <button class='btn-danger'>
+You can make a bootstrap row with <div class='row'>
+You can make parts of a column with <div class="cols-xs-4">
+You can center text in bootstrap with <class='text-primary'>
+You can use various cols-xs-4 classes to get different widths and sizes in bootstrap
+Another resource you can use is font awesome
+Font awesome is a library of icons
+These icons are vector graphics stored in the .svg file format
+These icons are treated just like fonts
+you can specify their size using pixels and they will assume the font-size of their parent HTML element
+<i class="fa fa-thumbs-up"></i> will make a thumbs up icon (i for icon, fa for font awesome, f-thumbs-up for the thumbs up icon)
+Other font-awesome icons include fa-info-circle, fa-trash, fa-paper-plane
+You can make a bootstrap text box with <input type='text' class='form-control'>
+To make a text box required within <form> tags, use <input type='text' required>

@@ -1,0 +1,165 @@
+/////////////////////////////////////////////////
+//                                             //
+//                  Chapter 1                  //
+//                                             //
+/////////////////////////////////////////////////
+
+
+RAMP UP
+This is a series on angular.js
+We will get an introduction to what is angular
+We will introduce the core elements of any angular application
+Must Know
+  HTML & CSS
+  Javascript
+Nice to Know
+  Automated Testing
+  Behaviour Driven Development (BDD)
+  Test Driven Development (TDD)
+Don't need to know any back end framerworks
+We can use angular to build any dynamic websites
+It will help organize javascript code
+Create responsive websites
+Angular also plays well with jQuery
+Angular is easy to test and create maintainable software with
+What is a responsive website?
+This is how fast a website loads or responds to user input
+The traditional page refresh-response cylce is fairly slow
+The browser initiates a request to a web server
+The server responds with all the files
+The browser renders the webpage
+Every new request sends over all the new data
+With a responsive webpage, after the original webpage is loaded, upon a link click, only the information needed to updtate the page is sent
+The browser will then update the page
+An increasing number of applications these days are building APIs
+This allows them to
+  Communicate with mobile apps
+  Connect with developers
+  Conect with front-end applications (angular.js)
+Angular is a client-side javascript framework for adding interactivity to hmtl
+We need to figure out how to tell html when to trigger our javascript
+In angular, we add behaviour through directives
+Directives are markers in html tags that tells angular to run javascript code
+We will add the attribute ng-controller="StoreController" to our body tag
+Directives are how we bind the behaviour
+The application we will be building in this course is the flatlander's gem store
+We will be able to submit reviews and view products
+The first steps to playing with angular is to download it from the website
+Download AngularJW http://angular.js.org/
+We'll need angular.min.js
+Download Twitter Bootstrap http://getbootstrap.com/
+We'll need bootstrap.min.css
+Let's start coding the html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  </head>
+  <body>
+    <script type="text/javascript" src="angular.min.js"></script>
+  </body>
+</html>
+We have included the css for twitter bootstrap and the angular library
+Next is learning about modules
+Modules are where we write pieces of our application
+They allow us to keep code encapsulated
+This is where we define dependencies for our application
+The first piece of code in angular is a module line
+var app = angular.module('store', [ ]);
+we are calling angular.module and calling it store
+The empty array is where we define dependencies
+This piece will live in an app.js file
+We will update our html to have
+<html ng-app="store">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  </head>
+  <body>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
+The ng-app="store" runs a module when the document loads
+This treats the html inside the element as part of the angular app
+Expressions allow us to insert dynamic values into our html
+I am {{4+6}} -> I am 10
+{{"Hello" + " you"}} -> Hello you
+
+
+INDEX HTML SETUP
+
+In this section we will learn about controllers
+Controllers help us get stuff onto the page
+We will be talking about a variable called gem
+Controllers allow us to define function and values
+We will wrap our entire application in a closure (its mainly just a good habit)
+We have
+(function() {
+  var app = angular.module('store', []);
+  var gem = {
+    name: 'Dodecahedron',
+    price: 2.95,
+    description: '. . .',
+  }
+  app.controller('StoreController', function() {
+    this.product = gem;
+  });
+})();
+We will specify the name of the controller (i.e. StoreController)
+It is important that this is capital case and we always use the word Controller
+The second parameter that we pass is an anonymous function
+This is what will be executed when our StoreController is called 
+We will calle this.product = gem;
+back in our html, we will have a template where we want to display our gem information
+The first thing we want to use is the ng-controller directive
+This allows us to attach the controller to the html
+We will use:
+ng-controller="StoreController as store"
+The keyword as specifies an alias for the StoreController which we will use for our expressions
+e.g.
+store.product.name gives us the product name
+We can only access properties from those certain controllers inside the html element in which we assign it
+
+BUILT-IN DIRECTIVES
+
+We will learn about a couple built-in directives
+Let's add a new key-value to our gem called canPurchase:false
+We have a button called Add to Cart that we only want to show up when canPurchase is true
+We ahve an expression that we can use so we have
+<button ng-show="store.product.canPurchase">Add to Cart</button>
+This directive is telling our button to only show if the value of the expression is ture
+In our case its false so that button won't show up on our webpage
+If we don't even have that property in our js, then it will interpret it as false
+Let's have another property called soldOut: true;
+For that entire div, we can use ng-show=!"store.product.soldOut"
+We can also use ng-hide="store.product.soldOut"
+If we jump back into our js we can make multiple products
+Let's change our gems to an array
+var gem = [
+  {
+    name: "Dodecahedron",
+    price: 2.95,
+    description: ". . .",
+    canPurchase: true,
+  },
+  {
+    name: "Pentagonal Gem",
+    price: 5.95,
+    description: ". . .",
+    canPurchase: false,
+  }
+];
+We can display all of these products with directives again
+In our index.html we can print each product by accessing their array index
+<h1> {{store.products[0].name}} </h1>
+etc.
+This is not very dynamic though
+We are just accessing them using their array indexes
+Let's use a directive to iterate through each directive
+ng-repeat="product in store.products"
+This basically create a for loop and call each variable product
+In this lesson, we learned about 4 key featuers
+  Directives (HTML annotations that trigger javascript behavours)
+  Modules (Where our application components live)
+  Controllers (Where we add application behaviour)
+  Expression (How values get displayed within the page)
