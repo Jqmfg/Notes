@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 
 
-INTRODUCTION
+## INTRODUCTION
 
 By the end of this chapter, you should be able to:
   Use and configure user accounts and user groups
@@ -60,10 +60,10 @@ uid=500(george) gid=500(george) groups=106(fuse),500(george)
 If given the name of another user as an argument, id will report information about that other user
 Adding a group can be done with groupadd
 $ sudo /usr/sbin/groupadd anewgroup
-Groups can be removed with 
+Groups can be removed with
 $ sudo /usr/sbin/groupdel anewgroup
 Adding a user to an already existing group is done with usermod
-e.g. you would first look at what groups the user belongs to 
+e.g. you would first look at what groups the user belongs to
   $ groups turkey
   turkey : turkey
 Then add the new group
@@ -109,7 +109,7 @@ The startup files can do anything the user would like to do in every command she
   Setting the default text editor
   Setting the path for where to find executable programs
 When you first login to Linux, /etc/profile is read and evaluated
-After this, the following files are searched (if they exist) in the listed order 
+After this, the following files are searched (if they exist) in the listed order
   1. ~/.bash_profile
   2. ~/.bash_login
   3. ~/.profile
