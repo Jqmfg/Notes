@@ -63,6 +63,7 @@ The Linux foundation seeks to make a strong pool of talent to meet that need.
 Because of the scattered nature of a lot of things in Linux, it is difficult for people to assemble material on their own.
 The Linux foundation is vendor neutral.
 Everything is extremely up to date.
+
 The foundation has a strong connection with a lot of leading kernel developers so it is easy to contribute to development.
 Students will get detailed course manuals that are essentially books.
 They are easy to reference later on in a few years.
@@ -82,60 +83,62 @@ The families and representative distributions are:
   * Fedora family systems (CentOS)
 
 There are three main Linux distributions, all of them are based around the Linux kernel
-the Debian family
-  * Ubuntu
-  * Linux mint
+  + the Debian family
+    * Ubuntu
+    * Linux mint
+  + the Fedora family
+    * RHEL
+      + CentOS
+      + OracleLinux
+  + the SUSE family
+    * SLES
+    * openSUSE
+  + other distros
 
-the fedora family
-  * RHEL
-    + CentOS
-    + OracleLinux
+Fedora is the community distro that forms the basis of RHEL, CentOS, Scientific Linux, and Oracle Linux.
+Fedora contains much more software than RHEL.
+One reason is that there is a diverse community building fedora.
+centos is used in this demo mainly because it has a longer dev cycle than fedora.
+The Linux kernel in RHEL/CentOS 6.x is 2.6.32.
+It supports x86, x86-64, itanium, powerpc, and ibm system z.
+fedora uses the RPM-based yum package manager.
+RHEL is widely used by enterprise which host their own systems.
 
-the SUSE family
-  * SLES
-  * openSUSE
-other distros
-Fedora is the community distro that forms the basiss of RHEL, CentOS, Scientific Linux, and Oracle Linux
-Fedora caintings much more software than RHEL
-One reason is that there is a diverse community building fedora
-centos is used in this demo mainly because it has a longer dev cycle than fedora
-The Linux kernel in RHEL/CentOS 6.x is 2.6.32
-It supports x86, x86-64, itanium, powerpc, and ibm system z
-fedora uses the RPM-based yum package manager
-RHEL is widely used by enterprise which host their own systems
-SUSE, SUSE Linux Enterprise Server (SLES), and openSUSE are similar to the relationship between the fedora-based distros
-openSUSE 12.3 is used as an example as this one
-Most things in openSUSE can be appliced to SLES and SUSE with no problem
-SLES is upstream for openSUSE
-openSUSE 12.3 uses Linux kernel 3.11
-SUSE uses the RPM-based zypper package manager
-it includes YaST (Yet another System Tool) application for sysadmin purposes
-SUSE is widely used in the retail sector
-The debian distro is upstream for several distributions such as ubuntu, which is upstream for Linux mint
-It is commonly used on servers and desktop computers
-Debian is a pure open source project and focuses on stability
-It also provides the largest and most complete software repository to its users
-Ubuntu aims at providing a compromise between stability and ease of use
-Ubuntu gets most of its packages from Debian, so it also has a large software repository
-Ubuntu 14.04 LTS (long term support) is used in this course
-Ubuntu 14.04 uses Linux kernel 3.13
-Debian-based systems use the DPKG-based apt-get package manager
-Ubuntu has been widely used for cloud deployments
-Ubuntu now uses the unity graphical interface and is GNOME-based
-The material provided by the Linux foundation is distribution-flexible
-Technical explanations, labs, and procedures should be applicable to most modern distros
+SUSE, SUSE Linux Enterprise Server (SLES), and openSUSE are similar to the relationship between the fedora-based distros.
+openSUSE 12.3 is used as an example as this one.
+Most things in openSUSE can be applied to SLES and SUSE with no problem.
+SLES is upstream for openSUSE.
+openSUSE 12.3 uses Linux kernel 3.11.
+SUSE uses the RPM-based zypper package manager.
+it includes YaST (Yet another System Tool) application for sysadmin purposes.
+SUSE is widely used in the retail sector.
+
+The debian distro is upstream for several distributions such as ubuntu, which is upstream for Linux mint.
+It is commonly used on servers and desktop computers.
+Debian is a pure open source project and focuses on stability.
+It also provides the largest and most complete software repository to its users.
+Ubuntu aims at providing a compromise between stability and ease of use.
+Ubuntu gets most of its packages from Debian, so it also has a large software repository.
+Ubuntu 14.04 LTS (long term support) is used in this course.
+Ubuntu 14.04 uses Linux kernel 3.13.
+Debian-based systems use the DPKG-based apt-get package manager.
+Ubuntu has been widely used for cloud deployments.
+Ubuntu now uses the unity graphical interface and is GNOME-based.
+
+The material provided by the Linux foundation is distribution-flexible.
+Technical explanations, labs, and procedures should be applicable to most modern distros.
 When choosing a Linux distro, you will notice that most technical differences are mainly:
-  package-management systems
-  software versions
-  file locations
-The destop enviornment used for this course is GNOME
-There are several different enviornments, but GNOME is the most popular
+  * package-management systems
+  * software versions
+  * file locations
+The desktop environment used for this course is GNOME.
+There are several different environments, but GNOME is the most popular.
 
 
 ## SUMMARY
 ___
 
-The Linux foundation is a nonprofit consortium dedicated to fostering the growth of Linux
-the Linux foundation training is for the community by the community
-It is distribution-flexible, technically advanced, and created with the leaders of the Linux community
-The three main distro families are fedora, SUSE, and Debian
+* The Linux foundation is a nonprofit consortium dedicated to fostering the growth of Linux
+* the Linux foundation training is for the community by the community
+* It is distribution-flexible, technically advanced, and created with the leaders of the Linux community
+* The three main distro families are fedora, SUSE, and Debian
