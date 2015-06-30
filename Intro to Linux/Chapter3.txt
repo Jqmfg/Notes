@@ -9,7 +9,7 @@ By the end of this chapter, you should be able to:
   * describe the boot process
   * know how to install Linux on a computer
 
-### SECTION 1: Linux FILESYSTEM BASICS
+### SECTION 1: LINUX FILESYSTEM BASICS
 ___
 
 A filesystem is a method for storing and organizing arbitrary collections of data in a human-usable form.
@@ -162,7 +162,7 @@ A desktop environment is also installed by default.
 
 All installers secure the system being installed as part of the installation.
 This consists of setting the password for the superuser (root) and setting up an initial user.
-In some cases (e.g. ubuntu) only an initial user is set up.
+In some cases (e.g. Ubuntu) only an initial user is set up.
 In this situation, the root user is disabled by default and requires logging in as a normal user and then using sudo.
 Some distributions will also install more advanced security frameworks such as SELinux or AppArmor.
 Like other operating systems, Linux distributions can be installed through usb, cd/dvd, and other methods.
