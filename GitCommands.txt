@@ -1,0 +1,42 @@
+# Personal Testing Github Repository
+
+## Introduction
+
+This is basically just going to an introduction to what exactly this repository is going to be.
+To tell you the truth, I'm not really sure what all of this is going to look like, but it's just basically going to be a way for me to practice using git so that I can remember the commands.
+Did you know that it turns out that the git commands are all so extremely straightforward and easy to remember.
+That's not to say that the concepts themselves are particularly hard, it's mostly just remembering what commands do what and when to use them.
+So far, I have initialized a new repository with ` git init ` and I will be doing some other stuff soon.
+
+## Known Commands
+
+* ` $ git help [command name] `: Looks up help for the given command. This can also be used with ` man `.
+* ` $ git config --global user.name [your username] `: This will set the global config setting for your username.
+* ` $ git config --global user.email [your email] `: This will set the global config setting for your email.
+* ` $ git config --list `: This will list all of the current config options that you have set.
+* ` $ git init `: Initializes a new git repository.
+
+
+* ` git status `: Shows all of the files that have been edited since the last commit and if they have been marked for the next commit or not.
+* ` $ git add [file] `: Adds a new file to be synced selected from a list of files that have changed.
+* ` $ git rm [file] `: Removes a file from the list of files to be committed in the next commit.
+* ` $ git diff `: Compares what is in your working directory with what is in your staging area. The result tell you changes that you've made that haven't been staged.
+* ` $ git commit `: Commits the changes that you've staged. If this is done without any options, then a file will open up so that you can put in a change message.
+* ` $ git commit -m "[message]" `: The ` -m ` flag allows you to predefine what the commit message will be. In this case, another text editor will not open for the commit message.
+* ` $ git tag [tag name] `: Gives a name (tag) to the last commit that you made.
+* ` $ git checkout [file] `: Discards the changes made in the selected file.
+
+
+* ` $ git checkout [branch name] `: Switches from the current branch to the one specified.
+* ` $ git checkout -b [branch name] `: Creates the specified branch and switches to it from the current branch.
+* ` $ git branch `: Lists all branches and marks the currently selected one.
+* ` $ git merge [branch] `: Merges the specified branch into the currently selected one.
+
+
+* ` $ git log `: Shows a log of all the commits that have been made.
+* ` $ git log -p `: Shows a list of commits with the ` diff `s for each one.
+* ` $ git log -2 `: Limits the number of commits that you want displayed (in this case to 2.)
+* ` $ git push `: Sends your changes in your local repository off to github.
+* ` $ git pull `: Updates your local respository with what is synced at github.
+* ` $ git push origin [tag name] `: This updates a specfic tag on github.
+* ` $ git push origin --tags `: This pushes all tags to github.
