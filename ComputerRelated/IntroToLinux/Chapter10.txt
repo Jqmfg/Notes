@@ -1,0 +1,85 @@
+# Chapter 10:
+
+### INTRODUCTION
+___
+
+By the end of this chapter, you should be familiar with:
+  * How to create and edit files using the available Linux text editors
+  * nano, a simple text-based editor
+  * gedit, a simple graphical editor
+  * vi and emacs, two advanced editors with both text-based and graphical interfaces
+
+### SECTION 1: BASIC EDITORS NANO AND GEDIT
+___
+
+At some point, you will need to manually edit text files.
+You might be:
+  * Composing an email off-line
+  * Writing a script to be used for bash or other command interpreters
+  * Altering a system or application configuration file
+  * Developing source code for a programming language such as ` C ` of ` Java `
+
+Linux admins often sidestep text editors by using graphical utilities for modifying config files.
+However, this is much more laborious than using a text editor.
+Note that word processing applications such as Notepad or the applications that are part of office suites are not really basic text editors because they have a lot of extra formatting information.
+This formatting information will render sysadmin config files unusable for their intended purpose.
+Using true text editors is essential for Linux.
+There are many choices when it comes to using text editors for Linux including:
+  * nano
+  * gedit
+  * vi
+  * emacs
+
+In this section, we will cover nano and gedit.
+Both of these editors are relatively simple and easy to learn.
+Sometimes, you might want to create a short file and don't want to bother invoking a text editor.
+in addition, doing so can be quite useful when used from within scripts, even when creating longer files.
+You'll find yourself using this method when you start on the later chapters that cover bash scripting.
+
+If you want to create a file without using an editor, there are two standard ways to do so from the command line and fill it with content.
+The first is to use echo repeatedly:
+  * ` $ echo line one > myfile `
+  * ` $ echo line two >> myfile `
+  * ` $ echo line three >> myfile `
+
+The single ` > ` will send the output of a command to a file.
+The double ` >> ` will append the output to an existing file.
+The second way is to use cat combined with redirection:
+  * ` $ cat << EOF > myfile `
+  * ` > line one `
+  * ` > line two `
+  * ` > line three `
+  * ` > EOF`
+
+Both the above techniques will produce the same output file.
+They can be extremely useful when employed by scripts.
+
+There are some text editors that are extremely easy to use and obvious in how they work.
+These don't take that much work to learn, but they aren't very robust.
+One particularly easy one to use is the text-terminal based editor nano.
+Just invoke nano by giving a file name as an argument.
+All the help you need is displayed at the bottom of the screen.
+As a graphical editor, gedit is part of the GNOME desktop system (kwrite is associated with KDE.)
+The gedit and kwrite editors are also very easy to use and extremely capable.
+They are also very configurable.
+They will look a lot like Notepad in Windows.
+Other variants such as kedit and kate are also supported by KDE.
+
+nano is easy to use and requires very little effort to learn.
+To open a file in nano, type ` $ nano <filename> ` and press ` ENTER `.
+If the file doesn't exist, it will be created.
+nano provides a two line "shortcut bar" at the bottom of the screen that lists the available commands.
+Some of these commands include:
+  * ` CTRL+G `: Display the help screen
+  * ` CTRL+O `: Write to a file
+  * ` CTRL+X `: Exit a file
+  * ` CTRL+R `: Insert contents from another file to the current buffer
+  * ` CTRL+C `: Cancels the previous commands
+
+gedit is a simple to use graphical editor that can only be run within a graphical desktop environment.
+It is visually similar to Notepad in Windows, but is far more capable and very configurable.
+it also has a wealth of plugins available to further extend its capabilities.
+To open a new file in gedit, find the program in your desktop's menu system, or from the command line type ` $ gedit <filename> `.
+If the file doesn't exist, it will be created.
+Using gedit is also very straightforward and doesn't require much training.
+Its interface is composed of very familiar elements.

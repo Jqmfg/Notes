@@ -49,6 +49,7 @@ This sets the default shell to ` /bin/bash `.
 Removing a user account can be done with ` $ userdel turkey `.
 This will leave the ` /home/turkey ` directory intact.
 This can be useful for temporary inactivation.
+
 To remove the home directory also you can add the ` -r ` option to ` userdel `.
 Typing id with no argument gives information about the current user.
 e.g. typing ` $ id ` will give `uid=500(george) gid=500(george) groups=106(fuse),500(george) `.
@@ -97,6 +98,7 @@ Some distros (such as Ubuntu) enable it by default for at least one main user, o
 To fully become root, one merely types ` su ` and is then prompted for the root password.
 To execute just one command with root privilege, type ` sudo <command> `.
 When the command is complete, you will return to being a normal unprivileged user.
+
 ` sudo ` config files are stored in ` /etc/sudoers ` file and the ` /etc/sudoers.d/ ` directory.
 By default, the ` sudoers.d ` directory is empty.
 In Linux, the command shell program (generally bash) uses one or more startup files to configure the environment.
@@ -397,4 +399,4 @@ ___
   * Adding an alias to ` ~/.bashrc ` will make it available for other shells
   * File permission can be changed by typing ` chmod permissions filename `
   * File ownership is changed by typing ` chown owner filename `
-  * File group ownerships is changed by typing ` chgrp gropup filename `  
+  * File group ownerships is changed by typing ` chgrp gropup filename `
