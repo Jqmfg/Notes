@@ -12,6 +12,7 @@ By the end of this chapter, you should be able to:
   * Use and set file permissions and ownership
 
 ### SECTION 1: ACCOUNTS
+___
 
 Linux is a multiuser operating system (more than one user can log in at the same time).
 To list the currently logged-on users, type ` $ who `.
@@ -121,3 +122,279 @@ Only the ` ~/.bashrc ` file is read and evaulated.
 Although this file is not read and evaluated with the login shell, most distros/users include the ` ~/.bashrc ` file from within one of the three user-owned startup files.
 In Ubuntu, openSUSE, and CentOS distros, the user must make changes in the ` ~/.bash_profile ` file to include the ` ~/.bashrc ` file.
 The ` .bash_profile ` will have certain extra lines which collect the required customization parameters from ` .bashrc `.
+
+### SECTION 2: ENVIRONMENT VARIABLES
+___
+
+Environment variables are named quantities that have specific values and are understood by the command shell (e.g. bash).
+Some of these are built-in to the system and others can be set by the users at the command line or through startup scripts.
+An environment variable is a character string that contains information used by an application.
+There are a number of ways to view the value of currently set environment variables.
+e.g. ` set `, ` env `, and ` export `.
+Depending on the state of your system, ` set ` may print out many more lines than the other two methods.
+
+  * ` $ set `
+  * ` BASH=/bin/bash `
+  * ` BASHOPTS=checkwinsize:cmdhist:Expand_aliases:extglbo:extquote:force_fignore `
+  * ` BASH_ALIASES=() `
+  * ` ... `
+
+
+  * ` $ env `
+  * ` SSH_AGENT_PID=1892 `
+  * ` GPG_AGENT_INFO=/run/user/me/keyring-Ilf3vt/gpg:0:1 `
+  * ` TERM=xterm `
+  * ` SHELL=/bin/bash `
+  * ` ... `
+
+
+  * ` $ export `
+  * ` declare -x COLORTERM=gnome-terminal `
+  * ` declare -x COMPIZ_BIN_PATH=/usr/bin / `
+  * ` declare -x COMPIZ_CONIFG_PROFILE=ubuntu `
+  * ` ... `
+
+By default, environment variables are created within a script are only available to the current shell.
+Child processes will not have access to values that have been set or modified.
+Allowing child processes to see the value requires the uses of ` export `.
+
+Task                                  | Command
+                                    - | -
+Show the value of a specific variable | ` echo $SHELL `
+Export a new variable value           | ` export VARIABLE=value ` or ` VARAIBLE=value; export VARIABLE `
+Add a variable permanently            | 1. Edit ` ~/.bashrc ` and add the line ` export VARIABLE=value `
+                                      | 2. Type ` source ~/.bashrc ` or just ` . ~/.bashrc ` or just start a new shell by typing ` bash `
+The ` HOME ` variable is the variable that represents the home (or login) directory of the user.
+` cd ` without arguments will change the current working directory to the value of ` HOME `.
+Note that the tilde character (` ~ `) is often used as an abbreviation for ` $HOME `.
+Thus ` cd $HOME ` and ` cd ~ ` are equivalent statements.
+
+Command          | Explanation
+-                | -
+` $ echo $HOME ` | Show the value of the ` HOME ` variable (which will return ` /home/me `)
+` $ cd /bin `    | Change the directory to ` /bin `
+` $ pwd `        | Prints the current working directory (which will return ` /bin `)
+` $ cd `         | Changes the directory to the one set by ` $HOME `
+` $ pwd `        | Calling ` pwd ` again will return ` /home/me `
+
+` PATH ` is an order4ed list of directories (the path) which is scanned when a command is given to find the appropriate program or script to run.
+Each directory in the path is separated by colons ( ` : `).
+A null (empty) directory name (or ` ./ `) indicates the current directory and any given time.
+  * ` :path1:path2 `
+  * ` path1::path2 `
+
+In the example ` :path1:path2 `, there is a null directory before the first colon.
+In the second example, there is a null directory between ` path1 ` and ` path2 `
+To prefix a private ` bin ` directory to your path:
+  1. ` $ export PATH=$HOME/bin:$PATH `
+  2. ` $ echo $PATH `
+  3. ` /home/me/bin:/usr/local/bin:/usr/bin:/bin/usr `
+
+Prompt Statement (` PS `) is used to customize your prompt string to display the information that you want.
+` PS1 ` is the primary prompt variable which controls what your command line prompt looks like.
+The following special characters can be included in ` PS1 `:
+  * ` \u ` - User name
+  * ` \h ` - Host name
+  * ` \w ` - Current working directory
+  * ` \! ` - History number of this command
+  * ` \d ` - Date
+
+They must be surrounded in single quotes when the are used as in the following example:
+  * ` $ echo $PS1 `
+  * ` $ `
+  * ` export PS1='\u@\h:\w$ `
+  * ` me@example.com:~$ # new prompt `
+  * ` me@example.com:$ `
+
+To revert the changes:
+  * ` me@example.com:~$ export PS1='$ ' `
+  * ` $ `
+
+Even better practice would be to save the old prompt first and then restore it as in:
+  * ` $ OLD_PS1=$PS1 `
+
+This allows you to change the prompt and then eventually change it back with:
+  * ` $ PS1=$OLD_PS1 `
+  * ` $ `
+
+The environment variable ` SHELL ` points to the user's default command shell.
+The command shell handles whatever you type in a command window and usually bash.
+` SHELL ` contains the full pathname to the shell:
+  * ` $ echo $SHELL `
+  * ` /bin/bash `
+  * ` $ `
+
+### SECTION 3: RECALLING PREVIOUS COMMANDS
+___
+
+Bash will keep track of previously entered commands and statements in a history buffer.
+You can recall previously used commands simply by using the ` up ` and ` down ` arrow keys.
+To view the list of previously executed commands, you can type history at the command line.
+The list of commands is displayed with the most recent item appearing last in the list.
+This information is stored under ` ~/.bash_history `.
+Several associated environment variables can be used to get information about the history file.
+  * ` HISTFILE ` stores the location of the history file.
+  * ` HISTFILESIZE ` stores the maximum number of lines in the history file.
+  * ` HISTSIZE ` stores the maximum number of lines in the history file for the current session.
+
+Specific keys can perform various tasks.
+
+Key | Usage
+- | -
+` Up `/` Down ` arrow keys | Browse through the list of commands previously executed
+` ! ! ` (pronounced bang-bang) | Execute the previous command
+` CTRL+R ` | Search previously used commands
+
+If you want to recall a command in the history list, but don't want to press the arrow key, you can press ` CTRL+R ` to do a reverse intelligent search.
+As you start typing, the search goes back in reverse order to the first command that matches the letters you've typed.
+You can type more letters to match more specific commands.
+The following is an example of how you can use ` CTRL+R ` to search through the command history.
+  * ` $ ^R ` # This all happens on 1 line
+  * ` (reverse-i-search)'s': sleep 1000 ` # searched for 's'; matched "sleep"
+  * ` $ sleep 1000 ` # Pressed enter to execute the searched command
+
+The table below describes the syntax used to execute previously used commands:
+
+Syntax | Task
+- | -
+` ! ` | Start a histroy substitution
+` !$ ` | Refer to the last argument in a line
+` !n ` | Refer to the nth command line
+` !string ` | Refer to the most recent command starting with string
+
+All history substitutions start with ` ! `.
+In the line ` $ ls -l /bin /etc /var `, ` !$ ` refers to ` /var ` which is the last argument in the line.
+Below is another example:
+  1. ` $ echo $SHELL `
+  2. ` $ echo $HOME `
+  3. ` $ echo $PS1 `
+  4. ` $ ls -a `
+  5. ` $ ls -l /etc/ passwd `
+  6. ` $ sleep 1000 `
+  7. ` $ history `
+
+  * ` $ !1 ` # execute command #1 above
+  * ` echo $SHELL `
+  * ` /bin/bash `
+  * ` $ !sl ` # Execute the command beginning with "sl"
+  * ` sleep 1000 `
+
+There are also keyboard shortcuts that you can use to preform different tasks quickly.
+The table below lists some of the keybord shortcuts and their uses:
+
+Keyboard Shortcut | Task
+- | -
+` CTRL+L ` | Clears the screen
+` CTRL+D ` | Exits the current shell
+` CTRL+Z ` | Puts the current process into suspended background
+` CTRL+C ` | Kills the current process
+` CTRL+H ` | Works the same as backspace
+` CTRL+A ` | Goes to the beginning of the line
+` CTRL+W ` | Deletes the word before the cursor
+` CTRL+U ` | Deletes from the beginning of the line to the cursor position
+` CTRL+E ` | Goes the end of the line
+` TAB ` | Auto-completes files, directories, and binaries
+
+### SECTION 4: COMMAND ALIASES
+___
+
+You can create custom commands or modify the behaviour of existing commands by creating aliases.
+Most often, these aliases are placed in your ~/.bashrc file so they are available to any command shells you create.
+Typing alias with no arguments will list currently defined aliases.
+Note that there should not be any spaces on either side of the equal sign and the alias definition needs to be placed within either single or double quotes if it contains any spaces.
+
+### SECTION 5: FILE PERMISSIONS
+___
+
+In Linux and other UNIX-based systems, every file is associated with a user who is the owner.
+Every file is also associated with a group (a subset of all users) which has an interest in the file and certain rights or permissions: read, write, and execute.
+The following utility programs involve user and group ownership and permission setting:
+
+Command | Usage
+- | -
+` chown ` | Change user ownership of a file or directory
+` chgrp ` | Change group ownership
+` chmod ` | Change the permissions on the file which can be done separately for owner, group, and the rest of the system (often named as other)
+
+Files have three kinds of permission:
+  * read (r)
+  * write (w)
+  * execute (x)
+
+These permissions affect three groups of owners:
+  * user/owner (u)
+  * group (g)
+  * others (o)
+
+As a result, you have the following three groups of permissions
+  * rwx: rwx: rwx
+  * u: g: o
+
+There are different ways to use chmod.
+To give the owner and others execute permission and remove the group write permission:
+  * ` $ ls -l test1 `
+  * ` -rw-rw-r-- 1 coop coop 1601 Mar 9 15:04 test1 `
+  * ` $ chmod uo+x, g-w test1 `
+  * ` ls -l test1 `
+  * ` -rwxr--r-x 1 coop coop 1601 Mar 9 15:04 test1 `
+
+` u ` stands for the user (ownser), ` o ` stands for other (world), and ` g ` stands for group.
+This kind of syntax can be difficult to type and remember, so there is a shorthand which lets you set all the permissions in one step.
+This is done with a simple algorithm and a single digit specifies all three permission bits for each entity.
+This digit is the sum of:
+  * 4 for read permission
+  * 2 for write permission
+  * 1 for execute permission
+
+Using this scheme, 7 means read/write/execute, 6 means read/write, and 5 means read/execute.
+When you apply this the chmod command, you have to give three digits for each degree of freedom such as in:
+  * ` $ chmod 755 test1 `
+  * ` $ ls -l test1 `
+  * ` -rwxr-xr-x 1 coop coop 1601 Mar 9 15:04 test1 `
+
+We can also change file ownership using ` chown `:
+  * ` $ ls -l `
+  * ` total 4 `
+  * ` -rw-rw-r--. 1 bob bob 0 Mar 16 19:04 file-1 `
+  * ` -rw-rw-r--. 1 bob bob 0 Mar 16 19:04 file-2 `
+  * ` drwxrwxr-x. 2bob bob 4096 Mar 16 19:04 temp `
+
+  * ` $ sudo chown root file-1 `
+  * [sudo] password for bob:
+
+  * ` $ ls -l `
+  * ` total 4 `
+  * ` -rw-rw-r--. 1 root bob 0 Mar 16 19:04 file-1 `
+  * ` -rw-rw-r--. 1 bob bob 0 Mar 16 19:04 file-2 `
+  * ` drwxrwxr-x. 2 bob bob 4096 Mar 16 19:04 temp `
+
+Wee can also change file ownership using ` chgrp `:
+  * ` $ sudo shgrp bin file-2 `
+  * ` $ ls -l `
+  * ` total 4 `
+  * ` -rw-rw-r--. 1 root bob 0 Mar 16 19:04 file-1 `
+  * ` -rw-rw-r--. 1 bob bin 0 Mar 16 19:04 file-2 `
+  * ` drwxrwxr-x. 1 bob bob 4096 Mar 16 19:04 temp `
+
+### SUMMARY
+___
+
+  * Linux is a multiuser system
+  * To find the currently logged on users, you can use the ` who ` command
+  * To find the current user ID, you can use the ` whoami ` command
+  * The ` root ` account has full access to the system
+  * It is never sensible to grant full root access to a user
+  * You can assign root privileges to regular user acounts on a temporary basis using the ` sudo ` command
+  * The shell program (bash) uses multiple startup files to create the user environment
+  * Each startup file affects the interactive environment in a different way
+  * ` /etc/profile ` provides the global settings startup file
+  * Advantages of startup files include that they customize the user's prompt, set the user's terminal type, set the command-line shortcuts and aliases, and set the default text editor
+  * An environment variable is a character string that contains data used by one or more applications
+  * The built-in shell variables can be customized to suit your requirements
+  * The ` histroy ` command recalls a list of previous commands which can be edited and recycled
+  * In Linux, various keyboard shortcuts can be used at the command prompt instead of the long actual commands
+  * You can customize commands by creating aliases
+  * Adding an alias to ` ~/.bashrc ` will make it available for other shells
+  * File permission can be changed by typing ` chmod permissions filename `
+  * File ownership is changed by typing ` chown owner filename `
+  * File group ownerships is changed by typing ` chgrp gropup filename `  

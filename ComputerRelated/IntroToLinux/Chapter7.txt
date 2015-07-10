@@ -10,6 +10,7 @@ By the end of this chapter you will be able to:
   * Install and update software
 
 ### SECTION 1: COMMAND LINE MODE OPTIONS
+___
 
 Linux sysadmins spend a lot of their time using the CLI.
 They often automate and troubleshoot tasks in this text environment.
