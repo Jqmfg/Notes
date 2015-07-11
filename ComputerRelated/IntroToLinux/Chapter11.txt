@@ -1,0 +1,50 @@
+# Chapter 11: Local Security Principles
+
+### INTRODUCTION
+___
+
+By the end of this chapter, you should:
+  * Have a good grasp of best practices and tools for making Linux systems as secure as possible
+  * Understand the powers and dangers of using the root (superuser) account
+  * Know how to use thee ` sudo ` command to perform privileged operations while restricting enhanced powers as much as feasible
+  * Be able to explain the importance of process isolation and hardware access
+  * Know how to work with passwords, including how to set and change them
+  * Describe how to secure the boot process and hardware resources
+
+### SECTION 1: UNDERSTANDING LINUX SECURITY
+___
+
+The Linux kernel allows properly authenticated users to access files and applications.
+Each user is identified by a unique integer (the user id or UID.)
+A separate database associates a username with each UID.
+When an account is created, new user information is added to the user database and the user's home directory is created and populated with some essential files.
+You can use command line programs like ` useradd ` and ` userdel ` along with GUI tools to create and remove accounts.
+For each user, the following table lists the seven fields that are maintained in the /etc/passwd file.
+
+Field Name | Details | Remarks
+- | - | -
+Username | User login name | Should be between 1 and 32 characters long
+Password | User password (or the character 'x' if the password is stored in the /etc/shadow file) in encrypted format | Is never show in Linux when it is being typed
+User ID (UID) | Every user must have a user id (UID) | <ul><li>UID 0 is reserved for the root user</li><li>UIDs ranging from 1-99 are reserved for other predefined accounts</li><li>UIDs ranging from 100-999 are reserved for system accounts and groups (except for RHEL which reserves only up to 499)</li><li>Normal users have UIDs of 1000 or greater, except on RHEL where they start at 500</li></ul>
+Gropu ID (GID) | The primary Group ID (GID) is stored in the /etc/group file | Will be covered ein further detail in the chapter on processes
+User Info | This field is optional and allows insertion of extra information about the user such as their name | e.g. Rufus T. Firefly
+Home Directory | The absolute path location of the user's home directory | e.g. /home/rtfirefly
+Shell | The absolute location of the user's default shell | e.g. /bin/bash
+
+By default, Linux distinguishes between several account types to isolate processes and workloads.
+Linux has four types of accounts:
+  * root
+  * System
+  * Normal
+  * Network
+
+For a safe working environment, it is advised to grant the minimum privileges possible and necessary to the accounts and remove inactive accounts.
+The last utility, which shows the last time each user has logged into the system, can be used to help identify potentially inactive accounts should be considered for removal.
+Keep in mind that you should be more strict on multi-user systems than you ar eon personal desktop systems that only affect the casual user.
+The practices in this chapter are meant for use on enterprise servers that you can use on all systems, but they can be relaxed on personal systems.
+
+root is the most privileged account on a Linux/UNIX system.
+This account has the ability to carry out all facets of system administration, including adding accounts, changing user passwords, examining log files, installing software, etc.
+Utmost care must be taken when using this account; it has no security restrictions on it.
+When you are signed in as or acting as root, the shell prompt displays ` # ` (If you are using bash and haven't customized the prompt.)
+This convention is intended to serve as a warning of the absolute power of this account.
