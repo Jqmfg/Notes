@@ -48,3 +48,35 @@ This account has the ability to carry out all facets of system administration, i
 Utmost care must be taken when using this account; it has no security restrictions on it.
 When you are signed in as or acting as root, the shell prompt displays ` # ` (If you are using bash and haven't customized the prompt.)
 This convention is intended to serve as a warning of the absolute power of this account.
+
+
+### SECTION 2: UNDERSTANDING THE USAGE OF THE ROOT ACCOUNT
+___
+
+You must have root privileges in order to perform operations such as:
+  * Creating, removing, and managing users accounts
+  * Managing software packages
+  * Removing or modifying system files
+  * Restarting system services
+
+Regular account users of Linux distros may be allowed to install software packages, update some settings, and apply various changes to the system.
+However, root privilege is required for performing some administration tasks such as restarting services, manually installing packages, and managing parts of the filesystem that are outside of the normal user's directories.
+
+To create a new user account in Linux:
+  1. At the command prompt, as root, type ` $ useradd <username> `
+  2. To set the inital password, type ` $ passwd <username> `: the new password prompt is displayed
+  3. You must enter and confirm the new password
+  4. The message ` passwd: all authentication tokens updated succesfully ` is displayed
+
+A regular account user can perform some operations requiring special permissions.
+The system configuration must allow such abilities to be exercised.
+SUID (Set owner User ID upon execution - similar to the Windows "run as" feature) is a special kind of file permission given to a file.
+SUID provides temporary permissions to a user to run a program with the permissions of the file owner instead of the permissions held by the user.
+The table below provides examples of operations that don't require root:
+
+Operations that do not require Root privilege | Examples of this operation
+- | -
+Running a network client | Sharing a file over the network
+Using devices such as printers | Printing over the network
+Operations on files that the user has proper permissions to access | Accessing files that you have access to or sharing data over the network
+Running SUID-root applications | Executing programs such as ` passwd `
