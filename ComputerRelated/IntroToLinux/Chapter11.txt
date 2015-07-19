@@ -40,7 +40,7 @@ Linux has four types of accounts:
 
 For a safe working environment, it is advised to grant the minimum privileges possible and necessary to the accounts and remove inactive accounts.
 The last utility, which shows the last time each user has logged into the system, can be used to help identify potentially inactive accounts should be considered for removal.
-Keep in mind that you should be more strict on multi-user systems than you ar eon personal desktop systems that only affect the casual user.
+Keep in mind that you should be more strict on multi-user systems than you are on personal desktop systems that only affect the casual user.
 The practices in this chapter are meant for use on enterprise servers that you can use on all systems, but they can be relaxed on personal systems.
 
 root is the most privileged account on a Linux/UNIX system.
@@ -80,3 +80,67 @@ Running a network client | Sharing a file over the network
 Using devices such as printers | Printing over the network
 Operations on files that the user has proper permissions to access | Accessing files that you have access to or sharing data over the network
 Running SUID-root applications | Executing programs such as ` passwd `
+
+### USING SUDO; THE IMPORTANCE OF PROCESS ISOLATION LIMITING HARDWARE ACCESS AND KEEPING SYSTEMS CURRENT
+___
+
+In Linux, you can use either ` su ` or ` sudo ` to temporarily grant root access to a normal user.
+The two methods are very different.
+The table below illustrates some of the differences between the two.
+
+` su ` | ` sudo `
+- | -
+When elevating privilege, you need to enter the root password. Giving the root password to a normal user should never be done. | When elevating privilege, you need to enter the user's password and not the root password.
+Once a user elevates to the root account using ` su `, the user can do anything that the root user can do for as long as the user wants without being asked again for a password. | Offers more features and is considered more secure and more configurable. Exactly what the user is allowed to do can be precisely controlled and limited. By default, the user will either always have to keep giving their password to do further operations with ` sudo `, or can avoid doing so for a configurable time interval.
+The command has limited logging features. | The command has detailed logging features.
+
+` sudo ` has the ability to keep track of unsuccessful attempts at gaining root access.
+User's authorization for using ` sudo ` is based on configuration information stored in the ` /etc/sudoers ` file and in the ` /etc/sudoers.d ` directory.
+A messsage such as the following would appear in a system log file (usually ` /var/log/secure `) when trying to execute ` sudo bash ` without successfully authenticating the user:
+
+  * ` authntication failure; logname=op uid=0 euid=0 tty=/dev/pts/6 ruser=op rhost= user=op `
+  * ` conversation failed `
+  * ` auth could not identify password fo [op] `
+  * ` op : 1 incorrect password attempt ` ;
+  * ` TTY=pts/6 ; PWD=/var/log ; USER=root ; COMMAND=/bin/bash `
+
+Whenever `sudo ` is invoked, a trigger will look at ` /etc/sudoers ` and the files in ` /etc/sudoers.d ` to determine if the user has the right to use ` sudo ` and what the scope of their privilege is.
+Unknown user requests and requests to do operations not allowed to the user even with ` sudo ` are reported.
+You can edit the ` sudoers ` file by using visudo.
+This ensures that only one person is editing the file at a time, has the proper permissions, and refuses to write out the file and exit if there is an error in the changes made.
+The basic structure of an entry is ` who where = (as_whom) what `.
+The file has a lot of documentation in it about how to customize.
+Most Linux distros now prefer that you add a file in the directory ` /etc/sudoers.d ` with the same name as the user.
+This file contains the individual user's ` sudo ` configuration and one should leave the master configuration file untouched except for changes that affect all users.
+By default, ` sudo ` commands and any failures are logged  in ` /var/log/auth.log ` under the Debian distro family and in ` /var/log/messages ` or ` /var/log/secure ` on other systems.
+This is an important safeguard to allow for tracking the accountability of ` sudo ` use.
+A typical entry of the message contains:
+  * Calling username
+  * Terminal info
+  * Working directory
+  * User account invoked
+  * Command with arguments
+
+Running a command such as ` $ sudo whoami ` results ina  log file entry such as ` Dec 8 14:20:47 server1 sudo: op : TTYP=pts/6 PWD=/var/log USER=root COMMAND=/usr/bin/whoami `
+Linux is considered to be more secure than many other operating systems because processes are naturally isolated from each other.
+One process cannot normally access the resources of another process, even when that process is running with the same user privileges.
+Additional security mechanisms that have been recently introduced in order to make risks even smaller are:
+  * Control Gropus (cgroups): Allows sysadmins to group processes and associate finite resources to each group
+  * Linux Containers (LXC): Makes it possible to run multiple isolated Linux systems (containers) on a single system by relying on cgroups
+  * Virtualization: Hardware is emulated in such a way that not can processes be isolated, but entire systems can be run simultaneously as isolated and insulated guests (virtual machines) on one physical host
+
+Linux limits user access to non-networking hardware devices in a manner that is extremely siilar to regular file access.
+Applications interact by engagin nthe filesystem layer (which is independent of the actual device or hadrware the file resides on.)
+This layer will then open a device special file (often called a device node) under the ` dev ` directory that corresponds to the device being accessed. Each device special file has standard owner, group, and world permission fields. Security is naturally enforced just as it is when standard files are accessed.
+Hard disks, for example, are represented as ` /dev/sd* `.
+While a root user can read and write to the disk in a raw fashion by doing something like ` $ echo hello world > /dev/sda1 `, the standard permissions as show in the figure make it impossible for regular users to do so.
+Writing to a devices in this fashion can easily obliterate the filesystem stored on it in a way that cannot be repaired without great effort, if at all.
+The normal reading an writing of files on the hard disk by applications is done at a higher level through the filesystem and never through direct aces to the device node.
+
+When security problems in either the Linux kernel or applicaions and libraries are discovered, Linux distributions have a good record of reacting quickly and pushing out fixes to all systems by updating their software repositories and sending notifications to update immediately.
+The same thing is true with bug fixes and performance improvements that are not security related.
+However, it is well known that many systems do not get update frequently enough and problems which have already been cured are allowed to remain on computers for a long time.
+This is particularly true with proprietary operating systems where users are either uninformed or distrustful of the vendor's patching policy as sometimes updates can cause new problems and break existing operations.
+Many of the most successful attack vectors come from exploiting security holes for which fixes are already known but not universally deployed.
+The best practice is to take advantage of your Linux distro's mechanism for automatic updates and never postpone them.
+It is extremely rare that such an update will cause new problems.
