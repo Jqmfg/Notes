@@ -1,0 +1,29 @@
+# Chapter 12: Network Operations
+
+### Introduction
+___
+
+By the end of this chapter you should be able to:
+  * Explain many basic networking concepts including types of networks and addressing issues.
+  * Know how to configure network interfaces and use basic networking utilites such as ` ifconfig `, ` ip `, ` ping `, ` route `, and ` traceroute `.
+  * Use graphical and non-graphical browsers such as Lynx, w3m, Firefox, Chrome, and Epiphany.
+  * Transfer files to and from clients and servers using both graphical and text mode applications such as Filezilla, ftp, sftp, curl, and wget.
+
+### SECTION 1: INTRODUCTION TO NETWORKING
+___
+
+A network is a group of computers and computing devices connected together through communication channels such as cables or wireless media.
+The computers connected over a network may be located in the same geographical area or spread across the world.
+A network is used to:
+  * Allow the connected devices to communicate with each other.
+  * Enable multiple users to share devices over the network such as printers and scanners.
+  * Share and manage information across computers easily.
+
+Most organizations have both an internal network and an Internet connection for users to communicate with machines and people outside the organization.
+The Internet is the largest network in the world and is often called "the network of networks".
+
+Devices attached to a network must have at least one unique network address identifier know as the IP (Internet Protocl) address.
+The address is essential for routing packets of information through the network.
+Exchanging information across the network requires using streams of bite-size packets, each of which contains a piece of the information going from one machine to another.
+These packets contain data buffers together with headers which contain information about where the packet is going to and coming from, and where it fits in the sequence of packets that constitute the stream.
+Networking protocls and software are rather complicated due to the diversity of machines and operating system they must deal with, as well as the fact that even very old standards must be supported.
