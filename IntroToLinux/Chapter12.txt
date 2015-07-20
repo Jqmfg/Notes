@@ -37,3 +37,39 @@ IPv6 uses 128-bits for addresses; this allows for 3.4x10^38 unique addresses.
 If you have a larger network of computers and want to add more, you may want to move to IPv6, because it provides more unique addresses.
 However, it is difficult to move to IPv6 as the two protocols do not inter-operate.
 Due to this, migrating equipment and addresses to IPv6 requires significant effort and hasn't been as fast as was originally intended.
+
+A 32-bit IPv4 address is divided into four 8-bit sections called octets.
+Example:
+IP address | 172.16.31.46
+- | -
+Bit format | 10101100.00010000.00011111.00101110
+
+Network addresses are divided into five classes: A, B, C, D, and E.
+Classes A, B, and C are classified into two parts: Network Addresses (Net ID) and Host addresses (Host ID).
+The Net ID is used to identify the network, while the host ID is used to identify a host in the network.
+Class D is used for special multicast applications (information is broadcast to multiple computers simultaneously) and Class E is reserved for future use.
+in this section, we will learn about classes A, B, and C.
+
+Class A addresses use the first octet of an IP address as their Net ID and use the other three octets as the Host ID.
+The first bit of the first octet is always set to zero.
+Thus you can only use 7-bits for unique network numbers.
+As a result, there are a maximum of 126 Class A networks available (the addresses 00000000 and 11111111 are reserved.)
+Not surprisingly, this was only feasible when there were very few unique networks with large numbers of hosts.
+As the use of the Internet expanded, Classes B and C were added in order to accommodate the growing demand for independent networks.
+Each Class A network can have up to 16.7 million unique hosts on its network.
+The range of host addresses is from 1.0.0.0 to 127.255.255.255
+The value of an octet, or 8-bits, can range from 0 to 255.
+
+Class B addresses use the first two octets of the IP address as their Net ID and the last two octets as the host ID.
+The first two bits of the first octet are always set to binary 10, so there are a maximum of 16,384 (14-bits) Class B networks.
+The first octet of a Class B address has values form 128 to 191.
+The introduction of Class B networks expanded the number of networks, but it soon became clear that a further level would be needed.
+Each Class B network can support a maximum of 65,536 unique hosts on its network.
+The range of host addresses is from 128.0.0.0 to 191.255.255.255
+
+Class C addresses use the first three octets of the IP address as their Net ID and the last octet as their Host ID.
+The first three bits of the first octet are set to binary 110, so almost 2.1 million (21-bits) Class C networks are available.
+The first octet of Class C addresses has values from 192 to 223.
+These are most common for smaller networks which don't have many unique hosts.
+Each Class C network can support up to 256 (8-bits) unique hosts.
+The range of host addresses is from 192.0.0.0 to 223.255.255.255.
