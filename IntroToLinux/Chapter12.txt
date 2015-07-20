@@ -26,4 +26,14 @@ Devices attached to a network must have at least one unique network address iden
 The address is essential for routing packets of information through the network.
 Exchanging information across the network requires using streams of bite-size packets, each of which contains a piece of the information going from one machine to another.
 These packets contain data buffers together with headers which contain information about where the packet is going to and coming from, and where it fits in the sequence of packets that constitute the stream.
-Networking protocls and software are rather complicated due to the diversity of machines and operating system they must deal with, as well as the fact that even very old standards must be supported.
+Networking protocols and software are rather complicated due to the diversity of machines and operating system they must deal with, as well as the fact that even very old standards must be supported.
+
+There are two different types of IP addresses available: IPv4 (version 4) and IPv6 (version 6).
+IPv4 is older and by far the more widely used, while IPv6 is newer and is designed to get past the limitations of the older standard and furnish many more possible addresses.
+IPv4 uses 32-bits for addresses; there are only 4.3 billion unique addresses available.
+Furthermore, many addresses are allotted and reserved, but not actually used.
+IPv4 is becoming inadequate because the number of devices available on the global network has significantly increased over the past years.
+IPv6 uses 128-bits for addresses; this allows for 3.4x10^38 unique addresses.
+If you have a larger network of computers and want to add more, you may want to move to IPv6, because it provides more unique addresses.
+However, it is difficult to move to IPv6 as the two protocols do not inter-operate.
+Due to this, migrating equipment and addresses to IPv6 requires significant effort and hasn't been as fast as was originally intended.
