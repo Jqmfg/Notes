@@ -159,3 +159,91 @@ iptraf | Monitors network traffic in text mode.
 
 ### SECTION 2: BROWSERS
 ___
+
+Browsers are used to retrieve, transmit, and explore information resources, usually on the World Wide Web.
+Linux users commonly use both graphical and non-graphical browser applications.
+The common graphical browsers used in Linux are:
+  * Firefox
+  * Google Chrome
+  * Chromium
+  * Epiphany
+  * Opera
+
+Sometimes, you either do not have a graphical environment to work in (or have reasons not too use it) but still need to access web resources.
+in such a case, you can still use non-graphical browsers such as the following:
+
+Non-Graphical Browser | Description
+lynx | Configurable text-based web browser; the earliest such browser and still in use.
+links or elinks | Based on lynx. It can display tables and frames.
+w3m | Newer text-based web browser with many features.
+
+Sometimes you need to download files and information but a browser is not the best choice, either because you want to download multiple files and/or directories, or you want to perform the action from a command line or a script.
+wget is a command line utility that can capably handle the following types of downloads:
+  * Large file downloads
+  * Recursive downloads where a web page refers to other web pages and all are downloaded at once
+  * Password required downloads
+  * Multiple file downloads
+
+To download a webpage, you can simply type ` $ wget <urL> ` and then you can read the downloaded page as a local file using a graphical or non-graphical browser.
+Besides downloading you may want to obtain information about a URL, such as the source code being used.
+curl can be used from the command line or from a script to read such information.
+curl also allows you to save the contents of a webpage to a file like wget.
+you can read a URL using ` $ curl <URL> `.
+For example, if you want to read http://www.linuxfoundation.org, type ` $ curl http://www.linuxfoundation.org `.
+To get the contents of a webpage and store it to a file, type ` $ curl -o saved.html http://www.mysite.com `.
+The contents of the main index file t the website will be saved in ` saved.html `.
+
+### SECTION 3: TRANSFERRING FILES
+___
+
+When you are connected to a network, you may need to transfer files from one machine to another.
+File Transfer Protocol (FTP) is a well-known and popular method for transferring files between computers using the Internet.
+This method is built on a client-server model.
+FTP can be used within a browser or with standalone client programs.
+
+FTP client enable you to transfer files with remote computers using the FTP protocol.
+These clients can be either graphical or command line tools.
+Filezilla, for example, allows use of the drag-and-drop approach to transfer files between hosts.
+All web browsers support FTP, all you have to do is give a URL like: ftp://ftp.kernel.org where the usual http:// becomes fpt://.
+Some command line FTP clients are:
+  * ftp
+  * sftp
+  * ncftp
+  * yafc (Yet Another FTP Client)
+
+sftp is a very secure mode of connection which uses the Secure Shell (ssh) protocol.
+sftp encrypts its data and thus sensitive information is transmitted more securely.
+However, it does not work with so-called anonymous FTP (gues user credentials.)
+Both ncftp and yafc are also powerful FTP clients which work on a wide variety of operating systems including Windows and Linux.
+
+Secure Shell (ssh) is a cryptographic network protocol used for secure data communication.
+It is also used for remote services and other secure services between two devices on the network and is very useful for administering systems which are not easily available to physically work on, but to which you have remote access.
+To run ` my_command ` on a remote system via SSh, at the terminal type: ` $ ssh <remotesystem> my_command `.
+ssh then prompts you for the remote password.
+You can also configure ssh to securely allow your remot access without typing a password each time.
+
+We can also move files securely using Secure Copy (scp) between two networked hosts.
+scp uses the ssh protocol for transferring data.
+To copy a local file to a remote system, at the command prompt, type ` $ scp <localfile> <user@remotesystem>:/home/user/ `.
+You will receive a prompt for the remote password.
+You can also configure scp so that it doesn't prompt fo a password for each transfer.
+
+# SUMMARY
+___
+
+  * The IP (Internet Protocol) address is a unique logical network address that is assigned to a device on a network.
+  * IPv4 uses 32-bits for addresses and IPv6 uses 128-bits for addresses.
+  * Every IP address contains both a network and a host address field.
+  * There are five classes of network addresses available: A-E.
+  * DNS (Domain Name System) is used for converting internet domain names and host names to IP addresses.
+  * The ifconfig program is used to display current active network interfraces.
+  * The commands ` ip addr show ` and ` ip route show ` can be used to view IP addresses and routing information.
+  * You can use ping to check if the remote host is alive and responding.
+  * You can use the route utility program to manage IP routing.
+  * You can monitor and ebug network problems using networking tools.
+  * Firefox, Google Chrome, Chromium, and Epiphany are the main graphical browsers used in Linux.
+  * Non-graphical browsers or text browsers used in Linux are Lynx, Links, and w3m.
+  * You can use curl to obtain information about URLs.
+  * FTP (File Transfer Protocol) is used to transfer files over a network.
+  * ftp, sftp, ncftp, and yafc are command line FTp clients used in Linux.
+  * You can use ssh to run commands on remote systems.
