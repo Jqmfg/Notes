@@ -69,7 +69,7 @@ Command | Usage
 ` echo string >> existingfile ` | The specified string is appended to the end of an already existing file.
 ` echo $variable ` | The contents of the specified environment variable are displayed.
 
-SECTION 2: SED AND AWK
+### SECTION 2: SED AND AWK
 ___
 
 It is very common to create and then repeatedly edit and/or extract contents from a file.
@@ -140,3 +140,27 @@ Command | Usage
 ` awk '{ print $0 }' /etc/passwod ` | Print the entire file.
 ` awk -F: '{ print $1 }' /etc/passwd ` | Print the first field (column of every line, separated by a space.)
 ` awk -F: '{ print $1 $6 }' /etc/passwd ` | Print the first and sixth field of every line.
+
+### SECTION 3: FILE MANIPULATION UTILITIES
+___
+
+In managing your files, you may need to perform many tasks such as sorting data and copying data from one location to another.
+Linux provides several file manipulation utilities that you can use while working with text files.
+In this section, you will learn about the following file manipulation programs:
+  * sort
+  * uniq
+  * paste
+  * join
+  * split
+
+You will also learn about regular expressions and search patterns.
+
+sort is used to rearrange the lines of a text file either in ascending or descending order, according to a sort key.
+You can also sort by particular fields of a file.
+The default sort key is the order of the ASCII characters (i.e. essentially alphabetically.)
+sort can be used as follows:
+
+Syntax | Usage
+- | -
+` sort <filename> ` | Sort the lines in the spcified file.
+` cat file1 file2  sort ` | Append the two files, then sort the lines and display the output on the terminal.
