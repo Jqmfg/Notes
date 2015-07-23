@@ -162,5 +162,95 @@ sort can be used as follows:
 
 Syntax | Usage
 - | -
-` sort <filename> ` | Sort the lines in the spcified file.
+` sort <filename> ` | Sort the lines in the specified file.
 ` cat file1 file2  sort ` | Append the two files, then sort the lines and display the output on the terminal.
+` sort -r <filename> ` | Sort the lines in reverse order
+
+When used with the ` -u ` option, sort checks for unique values after sorting the records (lines).
+It is equivalent to running ` uniq ` on the output of sort.
+
+uniq is used to remove duplicate lines in a text file and is useful for simplifying text display.
+uniq requires that the duplicate entries to be removed are consecutive.
+Therefore, one often runs sort first and then pipes the output into uniq; if sort passed the ` -u ` option, it can do all this in one step.
+in the example shown, the file is called ` names ` and was originaly ted, Bob, Alice, bob, Carol, Alice.
+to remove the duplicate entries from some files, you can do ` $ sort file1 file2 | uniq > file3 ` or ` sort -u file1 file2 > file 3 `
+To count the number of duplicate entries, you can use ` $ uniq -c filename `.
+
+Suppose that you have a file that contains the full name of all employees and another file that lists their phone numbers and Employee IDs.
+You want to create a new file that contains all the data listed in three columns: name, employee ID, and phone number.
+How can you do this effectively without investing too much time?
+paste can be used to create a single file containing all three columns.
+The different columns are identified based on delimiters (spacing used to separate two fields.)
+For example, delimiters can be a blank space, a tab, or an enter.
+paste accepts the following options:
+  * ` -d ` delimiters which specify a list of delimiters to be used instead of tabs for separating consecutive values on a single line. Each delimiter is used in turn; when the list has been exhausted, paste begins again at the next delimiter.
+  * ` -s ` which causes paste to append the data in series rather than in parallel; that is, in a horizontal rather than a vertical fashion.
+
+paste can be used to combine fields (such as name or phone number) from different files as well as combine lines from multiple files.
+For example, line one from ` file ` can be combined with line one of ` file 2 `, line two from ` file1 ` can be combined with line two of ` file2 ` and so on.
+To paste contents from two files, you can do ` $ paste file1 file2 `.
+The syntax to use a different delimiter is ` $ paste -d, file1 file2 `
+Common delimiters are 'space', 'tab', '|', 'comma', etc.
+
+Suppose that you have two files with similar columns.
+You have saved employee's phone numbers in two files: one with their first name and the other with their last name.
+You want to combine the files without repeating the data of common columns.
+you can achieve this using join, which is essentially an enhanced version of paste.
+It first checks whether the files share common fields such as names or phone numbers, and then joins the lines in two files based on a common field.
+To combibne two files on a common field, at the command prompt, type ` $ join file1 file2 `.
+For example, the common field (i.e. the field containing the same values) among the phonebook and directory files is the pohne number, as shown by the output of the following cat commands.
+  * ` $ cat phonebook `
+  * ` 555-12-3456 Bob `
+  * ` 555-231-3325 Carol `
+  * ` 555-240-5678 Ted `
+  * ` 555-290-6193 Alice `
+
+  * ` $ cat directory `
+  * ` 555-123-4567 Anytown `
+  * ` 555-231-3325 Mytown `
+  * ` 555-340-5678 Yourtown `
+  * ` 555-290-6193 Youngstown `
+
+The result of joining these two files is shown as the output of the following command:
+  * ` $ join phonebook directory `
+  * ` 555-123-4567 Bob Anytown `
+  * ` 555-231-3325 Carol Mytown `
+  * ` 555-340-5678 Ted Yourtown `
+  * ` 555-290-6193 Alice Youngstown `
+
+split is used to break up (or split) a file into equal-sized segments for easier viewing and manipulation, and is generally used only on relatively large files.
+By default, split breaks up a file into 1,000-line segments.
+The original file remains unchanged, and a set of new files with the same name plus an added prefix is created.
+By default, the x prefix is added.
+to split a file into segments, use the command ` $ split infle `.
+To split a file into segments using a different prefix, use the command ` $ split infile <prefix> `
+
+Regular expressions and text strings are used for matching a specific pattern or to search for a specific location such as the start or end of a line or word.
+Regular expressions can contain both normal characters or so-called metacharacters such as * and $.
+Many text editors and utilities such as vi, sed, awk, find, and grep work extensively with regular expressions.
+Some of the popular computer languages that use regular expressions include Perl, Python, and Ruby.
+It can get rather complicated and there are whole books written about regular expressions.
+These regular expressions are different from the wildcards (or "metacharacters") used in filename matching in command shells such as bash.
+The table below lists search patterns and their usage.
+
+Search Patterns | Usage
+- | -
+` .(dot) ` | Match any single character
+` a|z ` | Match a or z
+` $ ` | Match end of string
+` * ` | match preceding item 0 or more times.
+
+For example, consider the expression the quick brown fox jumped over the lazy dog.
+Some of the patterns that can be applied to this sentence are:
+
+Command | Result
+- | -
+` a.. ` | matches azy
+` b.|j. ` | matches br and ju
+` ..$ ` | matches og
+` l.* ` | matches lazy dog
+` l.*y ` | matches lazy
+` the.* ` | matches the whole sentence
+
+SECTION 4: GREP
+___
