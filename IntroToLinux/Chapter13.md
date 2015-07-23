@@ -236,7 +236,7 @@ The table below lists search patterns and their usage.
 Search Patterns | Usage
 - | -
 ` .(dot) ` | Match any single character
-` a|z ` | Match a or z
+<code>a&#124;z</code> | Match a or z
 ` $ ` | Match end of string
 ` * ` | match preceding item 0 or more times.
 
@@ -246,11 +246,47 @@ Some of the patterns that can be applied to this sentence are:
 Command | Result
 - | -
 ` a.. ` | matches azy
-` b.|j. ` | matches br and ju
+<code>b.&#124;j.</code> | matches br and ju
 ` ..$ ` | matches og
 ` l.* ` | matches lazy dog
 ` l.*y ` | matches lazy
 ` the.* ` | matches the whole sentence
 
-SECTION 4: GREP
+### SECTION 4: GREP
 ___
+
+grep is extensively used as a primary text searching tool.
+It scans for specified patterns and can be used with regular expressions as well as simple strings as shown in the table below:
+Command | Usage
+- | -
+` grep [pattern] <filename> ` | Search for a pattern in a file and print all matching lines.
+` grep -v [pattern] <filename> ` | Print all lines that do not match the pattern.
+` grep [0-9] <filename> ` | Print the lines that contain the numbers 0 through 9.
+` grep -C 3 [pattern] <filename> ` | Print context of lines (specified number of lines above and below the pattern) for. matching the pattern. Here the number of lines is specified as 3.
+
+### SECTION 5: MISCELLANEOOUS TEXT UTILITIES
+___
+
+In this section, we will learn about some additional text utilities that you can use for performing various actions on your Linux files, such as changing the case of letters or determining the count of words, lines, and characters in a file.
+The tr utility is used to translate specified characters into other characters or to delete them.
+The general syntax is ` $ tr [options] set1 [set2] `
+The items in the square brackets are optional.
+tr requires at least on argument and accepts a maximum of two.
+The first, designated ` set1 ` in the example, lists the characters in the etext to be replaced ore moved.
+The second, ` set2 `, lists the characters that are to be substituted for the characters listed in the first argument.
+Sometimes these sets need to be surrounded by apostrophes (or single-quotes) in order to have the shell ignore that they means something special to the shell.
+It is usually safe (and may be required) to use the single-quotes around each of the sets as you will see in the following example.
+Suppose you have a file named ` city ` containing several lines of text in mixed case.
+To translate all lower case characters to upper case, at the command prompt, type ` $ cat city | tr a-z A-Z `.
+The following table lists additional flags you may specify.
+
+Command | Usage
+- | -
+` $ tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLNOPQRSTUVWXYZ ` | Convert lower case to upper case.
+` $ tr '{}' '()' < inputfile > outputfile ` | Translates braces into parenthesis.
+<code>$ echo "This is for testing" &#124; tr [:space:] '\t'</code> | Translate white-space into tabs.
+<code>$ echo "This     is    for    testing" &#124; tr -s [:space:]</code> | Squeeze repetition of characters using ` -s `.
+<code>$ echo "the geek stuff" &#124; tr -d 't'</code> | Delete specified characters using the ` -d ` option.
+<code>$ echo "my username is 432234" &#124; tr -cd [:digit:]</code> | Complements the sets using ` -c ` option.
+` $ tr -cd [:print:] < file.txt ` | Remove all non-printable characters from a file.
+` $ tr -s '\n' ' ' < file.txt ` | Join all the lines in a file into a single file.
