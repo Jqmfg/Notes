@@ -34,3 +34,13 @@ CUPS carries out the printing process with the help of various components:
 
 CUPS is designed around a print scheduler that manages print jobs, handles admin commands, allows users to query the printer status, and manages the flow of data through all CUPS components.
 CUPS has a browser-based interface which allows you to view and manipulate the order and status of pending print jobs.
+
+The print scheduler reads server settings from several configuration files, the two most important of which are ` cupsd.conf ` and ` printers.conf `.
+These and all other CUPS related config files are stored under the ` /etc/cups ` directory.
+` cupsd.conf ` is where most system-wide settings are located; it doesn't contain any printer-specific details.
+Most of the settings available in this file relate to network security.
+For example which systems can access CUPS network capabilities, how printers are advertised on the local network, what management features are offered, and so on.
+` printers.conf ` is where you will find the printer-specific settings.
+For every printer connected to the system, a corresponding section describes the rpinter's status and capabilities.
+This file is generated only after adding a printer to the system and should not be modified by hand.
+You can view the full list of config files by typing ` $ ls -l /etc/cups/ `.
