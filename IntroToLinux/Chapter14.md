@@ -90,7 +90,7 @@ The web interface allows you to:
     - Show completed or pending jobs
     - Cancel or move jobs
 
-SECTION 2: PRINTING OPERATIONS
+### SECTION 2: PRINTING OPERATIONS
 ___
 
 Many graphical applications allow users to access printing features using the ` CTRL+P ` shortcut.
@@ -136,7 +136,7 @@ Command | Usage
 ` cancel job-id ` \n or \n ` lprm job-id ` | to cancel a print job
 ` lpmove job-id newprinter ` | To move a print job to a new printer
 
-SECTION 3: MANIPULATING POSTSCRIPT AND PDF FILES
+### SECTION 3: MANIPULATING POSTSCRIPT AND PDF FILES
 ___
 
 Postscript is a standard page description language.
@@ -159,3 +159,79 @@ Command | Usage
 ` enscript -p psfile.ps textfile.txt ` | Convert a text file to PostScript (saved to psfile.ps)
 ` enscript -n -p psfile.ps textfile.txt ` | Convert a text file to n columns where n = 1 - 9 (saved in psfile.ps)
 ` enscript textfile.txt ` | Print a text file directly to the default printer
+
+Linux has many standard programs that can read PDF files as well as many applications that can easily create them including all available office suites such as LibreOffice.
+The most common Linux PDF readers are:
+  1. Evince is available on virtually all distros and is the most widely used program
+  2. Okular is based on the older kpdf and available on any distro that provides the KDE environment
+  3. GhostView is on of the first open source PDF readers and is universally available
+  4. Xpdf is one of the oldest open source PDF readers and still has a good user base
+
+All of these open source PDF readers support and can read files following the PostScript standard unlike the proprietary Adobe Acrobat Reader which was once widely used on Linux systems, but with the growth of these excellent programs, few Linux users use it today.
+
+At times, you may want to merge, split or roate PDf files; not all of these operations can be achieved while using a PDF viewer.
+A great way to do this is to use the "PDF Toolkit" pdftk, to perform a very large variety of sophisticated tasks.
+Some of these operations include:
+  * Merging/splitting/rotating PDF documents
+  * Repairing corrupted PDF pages
+  * Pulling single pages from a file
+  * Encrypting and decrypting PDF files
+  * Adding, updating, and exporting a PDF's metadata
+  * Exporting bookmarks to a text file
+  * Filling out PDF forms
+
+There's very little pdftk cannot do when it comes to working with PDF files; it is the Swiss Army knife of PDF tools.
+
+To install pdftk on Ubuntu, use the command ` $ sudo apt-get install pdftk `.
+On CentOS, use ` $ sudo yuim install pdftk `.
+On openSUSE use ` $ sudo zypper install pdftk `.
+You may find that CentOS (and RHEL) don't have pdftk in their packaging system, but you can obtain the PDF Toolkit directly from the PDF Lab's vwebsite by downloading from http://www.pdflabs.com/docs/install-pdftk-on-redhat-or-centos/
+
+You can accomplish a wide variety of tasks using pdftk including those listed on the following table:
+
+Command | Usage
+- | -
+` pdftk 1.pdf 2.pdf cat output 12.pdf ` | Merge the two documents ` 1.pdf ` and ` 2.pdf `. The output will be saved to ` 12.pdf `.
+` pdftk A=1.pdf cat A1-2 output new.pdf ` | Write only pages 1 and 2 of ` 1.pdf `. The output will be saved to ` new.pdf `.
+` pdftk A=1.pdf cat A1-endright output new.pdf ` | Rotate all pages of ` 1.pdf ` 90 degrees clockwise and save result in ` new.pdf `.
+
+If you're working with PDF files that contain confidential information and you want to ensure that only certain people can view the PDF file, you can apply a password to it using the user_pw option.
+You can do this using a command like ` $ pdftk public.pdf output private.pdf user_pw PROMPT `.
+When you run this command, you will receive a prompt to set the required password, which can have a maximum of 32 characters.
+A new file, ` private.pdf ` will be created with the identical content as ` pulic.pdf `, but anyone will need to type the password to be able to view it.
+
+You can also use other tools such as pdfinfo, flpsed, and pdfmod to work with PDF files.
+pdfinfo can extract information about PDF files, especially when the files are very large or when a graphical interface is not available.
+flpsed can add data to a PostScript document. This tool is especially useful for filling in forms or adding short comments into the document.
+pdfmod is a simple application that provides a graphical interface for modifying PDF documents.
+Using this tool, you can reorder, rotate, and remove pages; export images from a document; edit the title, subject, and author; add keywords; and combine documents using drag-and-drop action.
+For example, to collect the details of a document, you can use the command ` $ pdfinfo /usr/share/doc/readme.pdf `.
+Most users today are far more accustomed to working with files in PDF format, viewing them easily either on the Internet through their browser or locally on their machine.
+The PostScript format is still important for various technical reasons that the general user will rarely have to deal with.
+From time to time, you may need to convert files from one format to the other, and there are very simple utilities for accomplishing that.
+ps2pdf and pdf2ps are part of the ghostscript package installed on or available on all Linux distros.
+As an alternative, there are pstopdf and pdftops which are usually part of the poppler packagte which may need to be added through your package manager.
+Unless you are doing a lot of conversions or need some of the fancier options which you can read about in the man pages for these utilities) it doesn't really matter which one you use.
+The following table lists some usage examples for these utilities:
+
+Command | Usage
+- | -
+` pdf2ps file.pdf ` | Converts ` file.pdf ` to ` file.ps `
+` ps2pdf file.ps ` | Converts `file.ps ` to ` file.pdf `
+` pstopdf input.ps output.pdf ` | Converts ` input.ps ` to ` output.pdf `
+` pdftops input.pdf output.ps ` | Converts ` input.pdf ` to ` output.ps `
+
+### SUMMARY
+___
+
+  * CUPS provides two command-line interfaces: the System V and BSD interfaces.
+  * The CUPS interface is available at http://localhost:631.
+  * lp and lpr are used to submit a document to CUPS directly from the command line.
+  * lpoptions can be used to set printer options and defaults.
+  * PostScript effectively manages scaling of fonts and vector graphics to provide quality prints.
+  * enscript is used to convert a text file to PostScript and other formats.
+  * Portable Document Format (PDF) is the standard format used to exchange documents while ensure a certain level of consistency in the way the documents are viewed.
+  * pdftk joins and splits PDFs; pulls single pages from a file; encrypts and decrypts PDF files; adds, updates, and exports a PDF's metadata; exports bookmarks to a text file; adds or removes attachments to a PDF; fixes a damaged PDf; and fills out PDF forms.
+  * pdfinfo can extract information about PDF documents.
+  * flpsed can add data to a PostScript document.
+  * pdfmod is a simple application with a graphical interface that you can use to modify PDF documents.
