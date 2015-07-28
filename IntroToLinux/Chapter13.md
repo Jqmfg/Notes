@@ -338,3 +338,51 @@ tail is especially useful when you are troubleshooting any issue using log files
 For example, to display the last 15 lines of ` atmtrans.txt `, use the command ` $ tail -n 15 atmtrans.txt `.
 You can also just say ` tail -15 atmtrans.txt `.
 To continually monitor new output in a growing log file, use ` $ tail -f atmtrans.txt `.
+This command will continuously display any new lines of output in atmtrans.txt as soon as they appear.
+Thus it enables you to monitor any current activity that is being reported and recorded.
+
+strings is used to extract all printable character strings found in a file or files given as arguments.
+It is useful in locating human readable content embedded in binary files: for text files you can just use grep.
+For example, to search for the string my_string in a spreadsheet, use ` $ strings book1.xls | grep my_string `.
+When working with compressed files many standard commands can't be used directly. For many commonly-used file and text manipulation programs, there is also a version especially designed to work directly with compressed files.
+
+When working with compressed files, many standard commands cannot be used directly.
+For many commonly-used file and text manipulation programs, there is also a version especially designed to work directly with compressed files.
+These associated utilities have the letter z prefixed to their name.
+For example, we have utility programs such as zcat, zless, zdiff, and zgrep.
+The following table lists some z family commands:
+
+Command | Description
+- | -
+` $ zcat compressed-file.txt.gz ` | To view a compressed file.
+` $ zless <filename.gz ` \n or \n ` $ zmore <filename>.gz ` | To page through a compressed file.
+` $ zgrep -i less test-file.txt.gz ` | To search inside a compressed file.
+` $ zdiff filename1.txt.gz filename2.txt.gz ` | To compare two compressed files.
+
+Note that if you run zless on an uncompressed file, it will still work and ignore the decompression stage.
+There are also equivalent utility programs for other compression methods besides gzip; i.e. we have bzcat and bzless associated with bazip2 and xzcat and xzless associated with xz.
+
+### SUMMARY
+___
+
+  * The command line often allows the user to perform tasks more efficiently than the GUI.
+  * cat, short for concatenate, is used to read, print, and combine files.
+  * echo displays a line of text either on standard output or to place in a file.
+  * sed is a popular stream editor often used to filter and perform substitutions on files and text data streams.
+  * awk is an interpreted programming language typically used as a data extraction and reporting tool.
+  * sort is used to sort text files and output stream in either ascending or descending order.
+  * uniq eliminates duplicate entries in a text file.
+  * paste combines fields from different files and can also extract and combine lines from multiple sources.
+  * join combines lines from two files based on a common field. It works only if files share a common field.
+  * split breaks up a large file into equal-sized segments.
+  * Regular expressions are text strings used for pattern matching. The pattern can be used to search for a specific location, such as the start or end of a line or word.
+  * grep searches text files and data streams for patterns and can be used with regular expressions.
+  * tr translates characters, copies standard input to standard output, and handles special characters.
+  * tee saves a copy of standard output to a file while still displaying it at the terminal.
+  * wc (word count) displays the number of lines, words, and characters in a file or a group of files.
+  * cut extracts columns from a file.
+  * less views files a page at a time and allows scrolling in both directions.
+  * head displays the first few lines of a file or data stream on standard output. By default it displays 10 lines.
+  * tail displays the last few lines of a file or data stream or standard output. By default, it displays 10 lines.
+  * strings extracts printable character strings from binary files.
+  * The z command family is used to read and work with compressed files.
