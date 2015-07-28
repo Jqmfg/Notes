@@ -290,3 +290,51 @@ Command | Usage
 <code>$ echo "my username is 432234" &#124; tr -cd [:digit:]</code> | Complements the sets using ` -c ` option.
 ` $ tr -cd [:print:] < file.txt ` | Remove all non-printable characters from a file.
 ` $ tr -s '\n' ' ' < file.txt ` | Join all the lines in a file into a single file.
+
+tee takes the output from any command and, while sending it to standard output, also saves it to a file.
+In other words, it "tees" the output stream from the command: one stream is displayed on the standard output and the other is saved to a file.
+For example, to list the contents of a directory on the screen and save the output to a file, use ` $ ls -l | tee newfile `.
+Typing ` $ cat newfile ` will then display the output of ` ls -l `.
+
+wc (word counts) counts the number of lines, words, and characters in a file or list of files.
+By default, all three of these options are active, but you can also toggle one or all of them manually.
+For example, to print the number of lines contained in a file, use ` wc -l filename `.
+
+Option | Description
+- | -
+` -l ` | Displays the number of lines
+` -c ` | Displays the number of bytes
+` -w ` | Displays the number of words
+
+cut is used for manipulating column-based files and is designed to extract specific columns.
+The default column separator is the tab character.
+A different delimiter can be given as a command option.
+For example, to display the third column delimited by a blank space, use ` ls -l | cut -d" " -f3 `.
+
+### SECTION 6: DEALING WITH LARGE FILES AND TEXT RELATED UTILITIES
+___
+
+Sysadmins need to work with configuration files, text files, documentation files, and log files.
+Some of these files may be large or become quite large as they accumulate data with time.
+These files will require both viewing and administrative updating.
+in this section, we will learn how to manage large files.
+For example, a banking system might maintain one simple large log file to record details of all of one day's ATM transactions.
+Due to a security attack or a malfunction, the administrator might be forced to check for some data by navigating within the file.
+In such cases, directly opening the file in an editor will cause issues due to the huge memory utilization, as an editor will usually try to read the whole file into memory first.
+However, one can use less to view the contents of such a large file, scrolling up and won page by page without the system having to place the entire file in memory before starting.
+This is much faster than using a text editor.
+Viewing the file can be done by uwing ` $ less <filename> ` or ` $ cat <filename> | less `.
+By default, manual (the man command) pages are sent through the less command.
+
+head reads the first few lines of each named file (10 by default) and displays it on standard output.
+You can give a different number of lines as an option as well.
+For example, if you want to print the first 5 lines from ` atmtrans.txt ` you would use ` $ head -n 5 atmtrans.txt `.
+You can also just use ` head -5 atmtrans.txt `.
+
+tail prints the last few lines of each named file and displays it on standard output.
+By default it displays the last 10 lines.
+Just as with head, you can give a different number of lines as an option.
+tail is especially useful when you are troubleshooting any issue using log files as you probably want to see only the most recent lines of output.
+For example, to display the last 15 lines of ` atmtrans.txt `, use the command ` $ tail -n 15 atmtrans.txt `.
+You can also just say ` tail -15 atmtrans.txt `.
+To continually monitor new output in a growing log file, use ` $ tail -f atmtrans.txt `.
