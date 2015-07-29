@@ -28,7 +28,7 @@ find . -name "*.c" -ls
 ```
 The ` #!/bin/bash ` in the first line should be recognized by anyone who has developed any kind of script in UNIX environments.
 The first line of the scripts that starts with ` #! ` contains the full path to the command interpreter (in this case ` /bin/bash `) that is to be used on the file.
-You have a few choices depending on which scripting langauage you use.
+You have a few choices depending on which scripting language you use.
 
 The command interpreter is tasked with executing statements that follow it in the script.
 Commonly used interpreters include:
@@ -62,7 +62,7 @@ echo "WORLD"
 then press ` ENTER ` and ` CTRL+D ` to save the file, or just create ` exscript.sh ` in your favorite text editor.
 Then, type ` $ chmod +x exscript.sh ` to make the file executable.
 The ` chmod +x ` makes the file executable for all users.
-You can then run it by simjply typing ` $ ./exscript.sh ` or doing:
+You can then run it by simply typing ` $ ./exscript.sh ` or doing:
 ```bash
 $ bash exscript.sh
 HELLO
