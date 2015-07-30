@@ -328,22 +328,22 @@ data definition is the most popular theory, others include disk destroyer and de
 ### SUMMARY
 ___
 
-  * The filesystem tree starts at what is often called the root directory (` / `)
-  * The Filesystem Hierarchy Standard (FHS) provides Linux developers and sysadmins with a standard directory structure for the filesystem
-  * Partitions help to segregate files according to usage, ownership, and type
-  * Filesystems can be mounted anywhere on the main filesystem tree at a mounting point
-  * Automatic filesystem mounting can be set up by editing ` /etc/fstab `
-  * Filesystems like /proc are called pseudo filesystem because they only exist in memory
-  * NFS (Network FileSystem) is a useful method for sharing files and data through network systems
-  * ` /root ` (slash-root) is the home directory for the root user
-  * ` /var ` may be put in its own filesystem so that growth can be contained and not fatally affect the system
-  * ` /boot ` contains the basic files needed to boot the system
-  * patch is a very useful tool in Linux
-  * Many modifications to source code and configuration files are distributed with patch files as they contain the deltas or changes
-  * These deltas go from an old version of a file to the new version of a file
-  * File extensions in Linux do not necessarily mean that a file is of a certain type
-  * cp is used to copy files on the local machine while ` rsync ` can also be used to copy files from one machine to another as well as synchronize contents
-  * ` gzip `, ` bzip2 `, ` xz `, and zip are used to compress files
-  * tar allows you to create or extract files from an archive file, often called a tarball
-  * You can optionally compress while creating the archive and decompress while extracting its contents
-  * ` dd ` can be used to make large exact copies even of entire disk partitions efficiently
+  * The filesystem tree starts at what is often called the root directory (` / `).
+  * The Filesystem Hierarchy Standard (FHS) provides Linux developers and sysadmins with a standard directory structure for the filesystem.
+  * Partitions help to segregate files according to usage, ownership, and type.
+  * Filesystems can be mounted anywhere on the main filesystem tree at a mounting point.
+  * Automatic filesystem mounting can be set up by editing ` /etc/fstab `.
+  * Filesystems like /proc are called pseudo filesystem because they only exist in memory.
+  * NFS (Network FileSystem) is a useful method for sharing files and data through network systems.
+  * ` /root ` (slash-root) is the home directory for the root user.
+  * ` /var ` may be put in its own filesystem so that growth can be contained and not fatally affect the system.
+  * ` /boot ` contains the basic files needed to boot the system.
+  * patch is a very useful tool in Linux.
+  * Many modifications to source code and configuration files are distributed with patch files as they contain the deltas or changes.
+  * These deltas go from an old version of a file to the new version of a file.
+  * File extensions in Linux do not necessarily mean that a file is of a certain type.
+  * cp is used to copy files on the local machine while ` rsync ` can also be used to copy files from one machine to another as well as synchronize contents.
+  * ` gzip `, ` bzip2 `, ` xz `, and zip are used to compress files.
+  * tar allows you to create or extract files from an archive file, often called a tarball.
+  * You can optionally compress while creating the archive and decompress while extracting its contents.
+  * ` dd ` can be used to make large exact copies even of entire disk partitions efficiently.

@@ -138,7 +138,7 @@ There are several different environments, but GNOME is the most popular.
 ## SUMMARY
 ___
 
-* The Linux foundation is a nonprofit consortium dedicated to fostering the growth of Linux
-* the Linux foundation training is for the community by the community
-* It is distribution-flexible, technically advanced, and created with the leaders of the Linux community
-* The three main distro families are fedora, SUSE, and Debian
+* The Linux foundation is a nonprofit consortium dedicated to fostering the growth of Linux.
+* the Linux foundation training is for the community by the community.
+* It is distribution-flexible, technically advanced, and created with the leaders of the Linux community.
+* The three main distro families are fedora, SUSE, and Debian.

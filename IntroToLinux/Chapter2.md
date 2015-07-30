@@ -173,6 +173,6 @@ All major distros provide update services for keeping your system primed with se
 ### SUMMARY
 ___
 
-* The Linux community is the far-reaching ecosystem of envelopers, vendors and users
-* They support and advance the Linux OS
-* A Linux distro consists of the kernel and other software tools for various tasks
+* The Linux community is the far-reaching ecosystem of envelopers, vendors and users.
+* They support and advance the Linux OS.
+* A Linux distro consists of the kernel and other software tools for various tasks.

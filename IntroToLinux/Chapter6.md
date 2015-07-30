@@ -78,7 +78,7 @@ Nodes are similar to sections and subsections in written documentation.
 you can move between nodes or view each node sequentially.
 Each node may contain menus and linked subtopics (items).
 Items can be compared to Internet hyperlinks.
-They are identified by an asterisk (*) at the beginning of the item name.
+They are identified by an asterisk (` * `) at the beginning of the item name.
 Named items (outisde a menu) are identified with double-colons (::) at the end of the item name.
 Items can refer to other nodes within the file or to other files.
 Some basic keystrokes for moving between nodes:
@@ -138,11 +138,11 @@ You can also use online search sites to locate helpful resources from all over t
 ### SUMMARY
 ___
 
-  * The main sources of Linux documentation are the man pages, GNU Info, the help options and commands, and a variety of online documentation resources
-  * The man utility searches, formats, and displays man pages
-  * The man pages provide in-depth documentation about programs and other topics about the system including config files, system calls, library routines, and the kernel
-  * The GNU Info System was created by the GNU project as its standard documentation
-  * It is robust and is accessible via command line, web, and graphical tools using info
-  * Short descriptions for commands are usually displayed with the ` -h ` or ` --help ` argument
-  * You can type help at the command line to display a synopsis of built-in commands
-  * There are many other help resources both on your system and on the internet
+  * The main sources of Linux documentation are the man pages, GNU Info, the help options and commands, and a variety of online documentation resources.
+  * The man utility searches, formats, and displays man pages.
+  * The man pages provide in-depth documentation about programs and other topics about the system including config files, system calls, library routines, and the kernel.
+  * The GNU Info System was created by the GNU project as its standard documentation.
+  * It is robust and is accessible via command line, web, and graphical tools using info.
+  * Short descriptions for commands are usually displayed with the ` -h ` or ` --help ` argument.
+  * You can type help at the command line to display a synopsis of built-in commands.
+  * There are many other help resources both on your system and on the internet.

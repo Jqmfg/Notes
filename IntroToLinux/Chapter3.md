@@ -185,11 +185,11 @@ If this isn't an option, then the system uses the normal update mechanism to ret
 ### SUMMARY
 ___
 
-  * A partition is a logical part of the disk
-  * A filesystem is a method of storing/finding files on a hard disk
-  * Dividing the hard disk into partitions allows data to be grouped and separated as needed
-  * When a failure or mistake occurs, only the data in the affected partition will be damaged
-  * The data on the other partitions will likely survive
-  * The boot process has multiple steps
-  * First the BIOS triggers the boot loader, which the starts the Linux kernel, the initramfs filesystem, and the init program
-  * Determining the right distribution requires that you match your requirements with the capabilities of the various distros
+  * A partition is a logical part of the disk.
+  * A filesystem is a method of storing/finding files on a hard disk.
+  * Dividing the hard disk into partitions allows data to be grouped and separated as needed.
+  * When a failure or mistake occurs, only the data in the affected partition will be damaged.
+  * The data on the other partitions will likely survive.
+  * The boot process has multiple steps.
+  * First the BIOS triggers the boot loader, which the starts the Linux kernel, the initramfs filesystem, and the init. program.
+  * Determining the right distribution requires that you match your requirements with the capabilities of the various distros.

@@ -179,7 +179,7 @@ In openSUSE to change themes you will need to install the gnome-weak-tool progra
 ### SUMMARY
 ___
 
-  * GNOME is a popular desktop environment and graphical user interface that runs on top of the Linux OS
-  * The default display manger for GNOME is called gdm
-  * The gdm display manager presents the user with the login screen which prompts for a username and password
-  * Logging out kills all processes in your current X session and returns to the display manager login screen
+  * GNOME is a popular desktop environment and graphical user interface that runs on top of the Linux OS.
+  * The default display manger for GNOME is called gdm.
+  * The gdm display manager presents the user with the login screen which prompts for a username and password.
+  * Logging out kills all processes in your current X session and returns to the display manager login screen.

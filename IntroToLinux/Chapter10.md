@@ -269,14 +269,14 @@ Key | Usage
 ___
 
   * Text editors (rather than word processing programs) are used often in Linux for tasks such as creating or modifying system config files, writing scripts, developing source code, etc.
-  * nano is an easy-to-use text-based editor that utilizes on-screen prompts
-  * gedit is a graphical editor very similar to Notepad in Windows
-  * The vi editor is available on all Linux systems and is very widely used
-  * Graphical extension versions of vi are also widely available
-  * emacs is available on all Linux systems as well as a popular alternative to vi
-  * emacs can support both a GUI and a text mode interface
-  * To access the vi tutorial, type vimtutor at the command line window
-  * To access the emacs tutorial, type ` CTRL+h ` and then ` t ` from within emacs
-  * vi has three modes: Command, Insert, and Line; emacs has only one, but requires use of special keys such as ` CTRL ` and ` ESC `
-  * Both editors use various combinations of keystrokes t accomplish tasks
-  * The learning curve to master these can be long, but once mastered, using either editor is extremely efficient
+  * nano is an easy-to-use text-based editor that utilizes on-screen prompts.
+  * gedit is a graphical editor very similar to Notepad in Windows.
+  * The vi editor is available on all Linux systems and is very widely used.
+  * Graphical extension versions of vi are also widely available.
+  * emacs is available on all Linux systems as well as a popular alternative to vi.
+  * emacs can support both a GUI and a text mode interface.
+  * To access the vi tutorial, type vimtutor at the command line window.
+  * To access the emacs tutorial, type ` CTRL+h ` and then ` t ` from within emacs.
+  * vi has three modes: Command, Insert, and Line; emacs has only one, but requires use of special keys such as ` CTRL ` and ` ESC `.
+  * Both editors use various combinations of keystrokes t accomplish tasks.
+  * The learning curve to master these can be long, but once mastered, using either editor is extremely efficient.

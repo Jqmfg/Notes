@@ -381,22 +381,22 @@ Wee can also change file ownership using ` chgrp `:
 ### SUMMARY
 ___
 
-  * Linux is a multiuser system
-  * To find the currently logged on users, you can use the ` who ` command
-  * To find the current user ID, you can use the ` whoami ` command
-  * The ` root ` account has full access to the system
-  * It is never sensible to grant full root access to a user
-  * You can assign root privileges to regular user acounts on a temporary basis using the ` sudo ` command
-  * The shell program (bash) uses multiple startup files to create the user environment
-  * Each startup file affects the interactive environment in a different way
-  * ` /etc/profile ` provides the global settings startup file
-  * Advantages of startup files include that they customize the user's prompt, set the user's terminal type, set the command-line shortcuts and aliases, and set the default text editor
-  * An environment variable is a character string that contains data used by one or more applications
-  * The built-in shell variables can be customized to suit your requirements
-  * The ` histroy ` command recalls a list of previous commands which can be edited and recycled
-  * In Linux, various keyboard shortcuts can be used at the command prompt instead of the long actual commands
-  * You can customize commands by creating aliases
-  * Adding an alias to ` ~/.bashrc ` will make it available for other shells
-  * File permission can be changed by typing ` chmod permissions filename `
-  * File ownership is changed by typing ` chown owner filename `
-  * File group ownerships is changed by typing ` chgrp gropup filename `
+  * Linux is a multiuser system.
+  * To find the currently logged on users, you can use the ` who ` command.
+  * To find the current user ID, you can use the ` whoami ` command.
+  * The ` root ` account has full access to the system.
+  * It is never sensible to grant full root access to a user.
+  * You can assign root privileges to regular user acounts on a temporary basis using the ` sudo ` command.
+  * The shell program (bash) uses multiple startup files to create the user environment.
+  * Each startup file affects the interactive environment in a different way.
+  * ` /etc/profile ` provides the global settings startup file.
+  * Advantages of startup files include that they customize the user's prompt, set the user's terminal type, set the command-line shortcuts and aliases, and set the default text editor.
+  * An environment variable is a character string that contains data used by one or more applications.
+  * The built-in shell variables can be customized to suit your requirements.
+  * The ` histroy ` command recalls a list of previous commands which can be edited and recycled.
+  * In Linux, various keyboard shortcuts can be used at the command prompt instead of the long actual commands.
+  * You can customize commands by creating aliases.
+  * Adding an alias to ` ~/.bashrc ` will make it available for other shells.
+  * File permission can be changed by typing ` chmod permissions filename `.
+  * File ownership is changed by typing ` chown owner filename `.
+  * File group ownerships is changed by typing ` chgrp gropup filename `.

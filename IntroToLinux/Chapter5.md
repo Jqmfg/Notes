@@ -131,12 +131,12 @@ OpenSUSE's YaST Software Management application is similar to the graphical pack
 
 SUMMARY
 
-  * You can control basic config options and desktop settings through they System Settings panel
-  * Linux uses Coordinated Universal Time (UTC) for its own internal time keeping
-  * You can set Date and Time Settings from the System Settings window
-  * The Network Time Protocol is the most popular and reliable protocol for setting the local time via internet servers
-  * The Displays panel allows you to change the resolution of your display and configure multiple screens
-  * Network Manager can present available wireless networks, allow the choice of wireless or mobile broadband networks, handle passwords, and set up VPNs
-  * dpkg and RPM are the most popular package management systems used on Linux distros
-  * Debian distros use dpkg and apt-based utilities for package management
-  * RPM was developed by Red Hat and adopted by a number of other distros including openSUSE, Mandriva, CentOS, Oracle Linux, and others
+  * You can control basic config options and desktop settings through they System Settings panel.
+  * Linux uses Coordinated Universal Time (UTC) for its own internal time keeping.
+  * You can set Date and Time Settings from the System Settings window.
+  * The Network Time Protocol is the most popular and reliable protocol for setting the local time via internet servers.
+  * The Displays panel allows you to change the resolution of your display and configure multiple screens.
+  * Network Manager can present available wireless networks, allow the choice of wireless or mobile broadband networks, handle passwords, and set up VPNs.
+  * dpkg and RPM are the most popular package management systems used on Linux distros.
+  * Debian distros use dpkg and apt-based utilities for package management.
+  * RPM was developed by Red Hat and adopted by a number of other distros including openSUSE, Mandriva, CentOS, Oracle Linux, and others.
