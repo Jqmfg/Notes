@@ -168,7 +168,7 @@ Besides reporting information, top can be utilized interactively for monitoring 
 While top is running in a terminal window, you can enter single-letter commands to change its behaviour.
 For example, you can view the top-ranked processes based on CPU or memory usage.
 If needed, you can alter the priorities of running processes or you can stop/kill a process.
-The following table lists what happens when pressing varous keys when running top:
+The following table lists what happens when pressing various keys when running top:
 
 Command | output
 - | -
@@ -179,3 +179,114 @@ Command | output
 ` k ` | Kill a specific process
 ` f ` | Enter the top configuration screen
 ` o ` | Interactively select a new sort order in the process list
+
+### SECTION 3: PROCESS METRICS AND PROCESS CONTROL
+___
+
+Load average is the average of the load number for a given period of time.
+It takes into account processes that are:
+  * Actively running on a CPU.
+  * Considered runnable, but waiting for a CPU to become available.
+  * Sleeping: i.e. waiting for some kind of resource (typically I/O) to become available.
+
+The load average can obtained by running w, top, or uptime.
+
+The load average is displayed using three sets of numbers.
+The last piece of information is the average load of the system.
+Assuming our system is a single-CPU, the 0.25 means that for the past minute, on average, the system has been 25% utilized.
+0.12 in the next position means that over the past 5 minutes, on average, the system has been 12% utilized.
+0.15 in the final position means that over the past 15 minutes, on average, the system has been 15% utilized.
+If we saw a value of 1.00 in the second position, that would imply that the single-CPU system was 100% utilized, on average, over the past 5 minutes; this is good if want to fully use a system.
+A value over 1.00 for a single-CPU system implies that the system was over-utilized: there were more processes needing CPU than CPU was available.
+If we had more than one CPU, say a quad-CPU system, we would divide the load average numbers by the number of CPUs.
+In this case, for example, seeing a 1 minute load average of 4.00 implies that the whole system was 100% (4.00/4) utilized during the last minute.
+Short term increases are not usually a problem.
+A high peak you see is likely a burst of activity, not a new level.
+For example, at start up, many processes start and then activity settles down.
+If a high peak is seen in the 5 and 15 minute load averages, it may be cause for concern.
+
+Linux supports background and foreground job processing.
+A job in this context is just a command launched from a terminal window.
+Foreground jobs run directly from the shell, and when one foreground job is running, other jobs need to wait for shell access (at least in that terminal window if using a GUI) until it is completed.
+This is fine when jobs complete quickly, but this can have an adverse effect if the current job is going to take a long time (even several hours) to complete.
+
+In such cases, you can run the job in the background and free the shell for other tasks.
+The background job will be executed at lower priority which, in turn, will allow smooth execution of the interactive task and allow you to type other commands in the terminal window while the background job is running.
+By default, all jobs are executed in the foreground.
+You can put a job in the background by suffixing ` & ` to the command like ` $ updatedb & `.
+You can either use ` CTRL+Z ` to suspend a foreground job, or ` CTRL+C ` to terminate a foreground job, and you can always use the bg and fg commands to run a process in the background and foreground respectively.
+
+The jobs utility displays all jobs running in the background.
+The display shows the job ID, state, and command name as shown in the following:
+```bash
+$ jobs
+[1]- Stopped      sleep 100
+[2]+ Stopped      sleep 100
+$ jobs -l
+[1]- 23375 Stopped      sleep 100
+[2]+ 23392 Stopped      sleep 100
+```
+` jobs -l ` provides the same information as ` jobs ` but also includes the PID of the background jobs.
+The background jobs are connected to the terminal window, so if you log off, the jobs utility will not show the ones started from the window.
+
+SECTION 4: STARTING PROCESSES IN THE FUTURE
+___
+
+Suppose you need to perform a task on a specific day sometime in the future but you know you will be away from the machine that day.
+You can use the at utility program to execute any non-interactive command at a specified time as evidenced in the following example:
+```bash
+$ at now + 2 days     #Specifies when the task needs to be performed: after 2 days from now
+at> cat file1.txt     #This command specifies the task to be performed
+at> <EOT>             #CTRL+D here
+job3 at 2014-07-12 11:58
+```
+
+cron is a time-based scheduling utility program.
+It can launch routine background jobs at specific times and/or days on an on-going basis.
+cron is driven by a configuration file called ` /etc/crontab ` (cron table) which contains the various shell commands that need to be run at the properly scheduled times.
+There are both system-wide crontab files and individual user-based ones.
+Each line of a crontab file represents a job and is composed of a so-called CRON expression followed by a shell command to execute.
+The crontab -e command will open the crontab editor to edit existing jobs or to create new jobs.
+Each line of the crontab file will contain 6 fields as detailed in the following table:
+
+Field | Description | Values
+- | - | -
+MIN | Minutes | 0 to 59
+HOUR | Hours | 0 to 23
+DOM | Day of Month | 1 to 31
+MON | Month | 1 to 12
+DOW | Days of Week | 0 to 6 (6 is Sunday)
+CMD | Command | Any command to be executed
+
+Examples:
+  * The entry "" * * * * * /usr/local/bin/execute/this/script.sh " will schedule a job to execute "script.sh" every minutes of every hour of every day of the month, and every month and every day of the week.
+  * The entry "30 08 10 06 * /home/sysadmin/full-backup" will schedule a full-backup at 8:30AM on the 10th of June irrespective of the day of the week.
+
+Sometimes a command or job must be delayed or suspended.
+Suppose an application has read and processed the contents of a data file and then needs to save a report on a backup system.
+If the backup system is currently busy or not available, the application can be made to sleep (wait) until it can complete its work.
+Such a light delay might be to mount the backup device and prepare it for writing.
+sleep suspends execution for at least the specified period of time which can be given as the number of seconds (default), minutes, hours, or days.
+After that time has passed (or an interrupting signal has bee received) execution will resume.
+The syntax is ` sleep NUMBER[SUFFIX] . . . ` where SUFFIX may be:
+  * ` s ` for seconds (default)
+  * ` m ` for minutes
+  * ` h ` for hours
+  * ` d ` for days
+
+sleep and at very different; sleep delays execution for a specific period while at starts execution at a later time.
+
+### SUMMARY
+___
+
+  * Processes are used to perform various tasks on the system.
+  * Processes can be single-threaded or multi-threaded.
+  * Processes can be of different types such as interactive and non-interactive.
+  * Every process has a unique identifier (PID) to enable the operating system to keep track of it.
+  * The nice value or niceness can be used to set priority.
+  * ps provides information about the currently running processes.
+  * You can use top to get constant real-time updates about overall system performance as well as information about the processes running on the system.
+  * Load average indicates the amount of utilization the system is under at particular times.
+  * Linux supports background and foreground processing for a job.
+  * at executes any non-interactive command at a specified time.
+  * cron is used to schedule tasks that need to be performed at regular intervals.
