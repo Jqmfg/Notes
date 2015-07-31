@@ -71,7 +71,7 @@ Can integrate into the professional community and the development community.
 The Linux foundation has the copyright for all of these course materials.
 
 
-## SECTION 3: COURSE LINUX REQUIREMENTS
+### SECTION 3: COURSE LINUX REQUIREMENTS
 ___
 
 In order to fully benefit from this course, you should have at least one Linux distro installed.
