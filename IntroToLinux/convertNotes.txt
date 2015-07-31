@@ -1,0 +1,21 @@
+we need to cover:
+double new lines (should stay double new lines)
+single new lines (should convert to single space and cover if we have a space there already)
+lists
+page line after h3
+
+steps:
+find triple lines and convert to double lines
+find double lines and convert to [double_line]
+find single line with "___" and convert to [line_break]
+find single line with double tab and convert to [line_double_tab]
+find single line with single tab and convert to [line_single_tab]
+start replacement now
+find two spaces and convert to single space
+find single space with line and convert to single space
+find single line and convert to space
+find [line_single_tab] and convert to single line with a single tab
+find [line_double_tab] and convert to single line with a double tab
+find [line_break] and convert to single line with "___"
+find [double_line] and convert to double lines
+

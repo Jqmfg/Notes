@@ -12,7 +12,6 @@ We will talk about some of the basics of the Linux foundation.
 This intro will also talk through some of the basics of how this course will work.
 We will also pick out a Linux distribution that is right for you.
 
-
 ### SECTION 1: THE LINUX FOUNDATION
 ___
 
@@ -72,7 +71,7 @@ Can integrate into the professional community and the development community.
 The Linux foundation has the copyright for all of these course materials.
 
 
-## SECTION 3: COURSE Linux REQUIREMENTS
+## SECTION 3: COURSE LINUX REQUIREMENTS
 ___
 
 In order to fully benefit from this course, you should have at least one Linux distro installed.

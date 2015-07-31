@@ -72,7 +72,7 @@ Can integrate into the professional community and the development community.
 The Linux foundation has the copyright for all of these course materials.
 
 
-## SECTION 3: COURSE Linux REQUIREMENTS
+### SECTION 3: COURSE Linux REQUIREMENTS
 ___
 
 In order to fully benefit from this course, you should have at least one Linux distro installed.
@@ -142,6 +142,7 @@ ___
 * the Linux foundation training is for the community by the community.
 * It is distribution-flexible, technically advanced, and created with the leaders of the Linux community.
 * The three main distro families are fedora, SUSE, and Debian.
+
 # Chapter 2: Linux Philosophy and Concepts
 
 ### INTRODUCTION
