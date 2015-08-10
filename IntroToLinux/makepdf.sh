@@ -18,7 +18,9 @@ cat Chapter15.md >> IntroToLinux.md
 cat Chapter16.md >> IntroToLinux.md
 cat Chapter17.md >> IntroToLinux.md
 cat Chapter18.md >> IntroToLinux.md
-#TODO: Reference convertNotes.txt for steps before conversion
+#Reference convertNotes.txt for steps before conversion
+#Call formatScript.pl to format the Notes
+perl formatScript.pl
 
 pandoc -f markdown_github IntroToLinux.md -o IntroToLinux.pdf
-rm IntroToLinux.md
+#TODO: Option to remove IntroToLinux.md
