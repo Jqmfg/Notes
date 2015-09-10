@@ -1,6 +1,5 @@
 # Chapter 1: The Linux Foundation
 
-
 ### INTRODUCTION
 ___
 
