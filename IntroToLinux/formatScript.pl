@@ -34,6 +34,9 @@ $data =~ s/\(line_quad_tab\)/\n        /g;
 $data =~ s/\(line_break\)/\n___/g;
 $data =~ s/\(double_line\)/\n\n/g;
 
+#Fixing the h1 formatting
+$data =~ s/#/\n#/g;
+
 #Replacing code_blocks
 $data =~ s/\(code_block\)/ shift @code_block_values/xge;
 
